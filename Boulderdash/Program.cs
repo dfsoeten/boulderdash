@@ -8,8 +8,8 @@ namespace Boulderdash
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-        }
+        private static Game _game;
+
+        static void Main(string[] args) => (_game = new Game()).Start();
     }
 }
