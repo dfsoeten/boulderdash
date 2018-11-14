@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Boulderdash.app.models
 {
-    abstract class Moveable
+    abstract class Moveable : Entity
     {
     }
 }

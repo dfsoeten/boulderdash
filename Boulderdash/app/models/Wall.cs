@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Boulderdash.app.models
 {
-    class Wall
+    class Wall : Entity
     {
     }
 }

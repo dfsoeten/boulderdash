@@ -66,6 +66,11 @@
     <None Include="App.config" />
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="levels\level1.txt" />
+    <Content Include="levels\level2.txt" />
+    <Content Include="levels\level3.txt" />
+    <Content Include="levels\test.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
