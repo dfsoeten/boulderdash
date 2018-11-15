@@ -24,44 +24,50 @@ namespace Boulderdash.app.controller
         public Parser()
         {
             Tile[][] tiles;
-            char[] letters;
-
-
 
             foreach (var fileName in new DirectoryInfo(_levelsPath).GetFiles("*.txt"))
             {
+                //Create new level object
+                Levels.AddLast(new Level());
+
                 //Create tiles array object
                 tiles = File.ReadAllLines($@"{_levelsPath}\{fileName}").Select(l => l.ToCharArray().Select(c => CreateTile(c)).ToArray()).ToArray();
 
-                //Create new level object
-                Levels.AddLast(new Level() { _start = tiles[0][0]});
+                //Set start tile
+                Levels.Last.Value.Start = tiles[0][0];
 
                 for (int y = 0; y < tiles.Length; y++)
                 {
                     for (int x = 0; x < tiles[y].Length; x++)
                     {
-                        //@todo: link tiles here
+                        tiles[y][x].Top = (y - 1 >= 0) ? tiles[y - 1][x] : null;
+                        tiles[y][x].Right = (x + 1 < tiles[y].Length) ? tiles[y][x + 1] : null;
+                        tiles[y][x].Bottom = (y + 1 < tiles.Length) ? tiles[y + 1][x] : null;
+                        tiles[y][x].Left = (x - 1 >= 0) ? tiles[y][x - 1] : null;
                     }
                 }
             }
         }
 
+        //Create tile objects with the right entity objects
         private Tile CreateTile(char c)
         {
+            Tile tile;
+
             switch (c)
             {
                 case 'S': //Steelwall
                     return new Tile(new Steelwall());
                 case 'B': //Boulder
-                    return new Tile(new Boulder());
+                    Levels.Last.Value.Boulders.Add(tile = new Tile(new Boulder())); return tile;
                 case 'M': //Mud
                     return new Tile(new Mud());
                 case 'F': //Firefly
-                    return new Tile(new Firefly());
+                    Levels.Last.Value.FireFlies.Add(tile = new Tile(new Firefly())); return tile;
                 case 'R': //Rockford
-                    return new Tile(new Rockford());
+                    return Levels.Last.Value.RockFord = new Tile(new Rockford());
                 case 'D': //Diamond
-                    return new Tile(new Diamond());
+                    Levels.Last.Value.Diamonds.Add(tile = new Tile(new Diamond())); return tile;
                 default: //Air
                     return new Tile(null);
             }
