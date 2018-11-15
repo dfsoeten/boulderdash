@@ -8,11 +8,15 @@ namespace Boulderdash.app.models
 {
     class Level
     {
+        public string Name { get; set; }
+
         public Tile Start { get; set; }
+
         public Tile RockFord { get; set; } 
         public List<Tile> FireFlies { get; } = new List<Tile>();
         public List<Tile> Boulders { get; } = new List<Tile>();
         public List<Tile> Diamonds { get; } = new List<Tile>();
+        
 
         public Level()
         {

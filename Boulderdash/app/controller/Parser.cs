@@ -28,7 +28,7 @@ namespace Boulderdash.app.controller
             foreach (var fileName in new DirectoryInfo(_levelsPath).GetFiles("*.txt"))
             {
                 //Create new level object
-                Levels.AddLast(new Level());
+                Levels.AddLast(new Level() { Name = Path.GetFileNameWithoutExtension(fileName.Name) });
 
                 //Create tiles array object
                 tiles = File.ReadAllLines($@"{_levelsPath}\{fileName}").Select(l => l.ToCharArray().Select(c => CreateTile(c)).ToArray()).ToArray();
