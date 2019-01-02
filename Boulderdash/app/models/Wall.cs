@@ -8,5 +8,20 @@ namespace Boulderdash.app.models
 {
     class Wall : Entity
     {
+        public override char GetCharacter()
+        {
+            return '■';
+        }
+
+        public override ConsoleColor GetColor()
+        {
+            return ConsoleColor.Gray;
+        }
+
+        //Destroy Wall
+        public override void Destroy(Tile tile)
+        {
+            tile.Entity = new Air();
+        }
     }
 }

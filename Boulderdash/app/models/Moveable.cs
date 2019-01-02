@@ -8,5 +8,6 @@ namespace Boulderdash.app.models
 {
     abstract class Moveable : Entity
     {
+        public override abstract Tile Move(Tile from, Tile to);
     }
 }

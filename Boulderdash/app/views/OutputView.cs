@@ -9,6 +9,12 @@ namespace Boulderdash.app.views
 {
     class OutputView : BaseView
     {
+        public OutputView()
+        {
+            //Set encoding to UTF8 to support unicode characters
+            Console.OutputEncoding = Encoding.UTF8;
+        }
+
         //Levelselector
         public void LevelSelector(LinkedList<Level> levels, LinkedListNode<Level> selectedLevel)
         {
@@ -16,20 +22,57 @@ namespace Boulderdash.app.views
             Console.Clear();
 
             //Boulderdash ACII
-            WriteYellowLine(@" ____              _     _              _           _      ");
-            WriteYellowLine(@"|  _ \            | |   | |            | |         | |     ");
-            WriteYellowLine(@"| |_) | ___  _   _| | __| | ___ _ __ __| | __ _ ___| |__   ");
-            WriteYellowLine(@"|  _ < / _ \| | | | |/ _` |/ _ \ '__/ _` |/ _` / __| '_ \  ");
-            WriteYellowLine(@"| |_) | (_) | |_| | | (_| |  __/ | | (_| | (_| \__ \ | | | ");
-            WriteYellowLine(@"|____/ \___/ \__,_|_|\__,_|\___|_|  \__,_|\__,_|___/_| |_| ");
+            WriteColoredLine(@"  ____              _     _              _           _      ", ConsoleColor.Yellow);
+            WriteColoredLine(@" |  _ \            | |   | |            | |         | |     ", ConsoleColor.Yellow);
+            WriteColoredLine(@" | |_) | ___  _   _| | __| | ___ _ __ __| | __ _ ___| |__   ", ConsoleColor.Yellow);
+            WriteColoredLine(@" |  _ < / _ \| | | | |/ _` |/ _ \ '__/ _` |/ _` / __| '_ \  ", ConsoleColor.Yellow);
+            WriteColoredLine(@" | |_) | (_) | |_| | | (_| |  __/ | | (_| | (_| \__ \ | | | ", ConsoleColor.Yellow);
+            WriteColoredLine(@" |____/ \___/ \__,_|_|\__,_|\___|_|  \__,_|\__,_|___/_| |_| ", ConsoleColor.Yellow);
 
             //Levelselect
-            Console.WriteLine("\n==========================================================\n");
-            Console.WriteLine("Select a level to play:");
+            Console.WriteLine("\n ==========================================================\n");
+            Console.WriteLine(" Select a level to play:");
             foreach (Level level in levels)
             {
-                WriteRedCharacter(level == selectedLevel.Value ? "> " : "  "); Console.WriteLine(level.Name);
+                WriteColoredCharacter(level == selectedLevel.Value ? " → " : "   ", ConsoleColor.Red); Console.WriteLine(level.Name);
             }
+            Console.WriteLine("\n ==========================================================");
+        }
+
+        //Display the level
+        public void Level(Level level)
+        {
+            //Clear the console
+            Console.Clear();
+
+            Tile currentNode = level.Start, startingNode = level.Start;
+
+            while (currentNode != null)
+            {
+                while (currentNode != null)
+                {
+                    WriteColoredCharacter($"{currentNode.Character}", currentNode.Color);
+                    currentNode = currentNode.Right;
+                }
+
+                Console.WriteLine();
+                currentNode = startingNode.Bottom;
+                startingNode = currentNode;
+            }
+        }
+
+        public void GameOver()
+        {
+            //Clear the console
+            Console.Clear();
+
+            //GameOver ACII
+            WriteColoredLine(@"  _____                         ____                 _ ", ConsoleColor.Red);
+            WriteColoredLine(@" / ____|                       / __ \               | |", ConsoleColor.Red);
+            WriteColoredLine(@"| |  __  __ _ _ __ ___   ___  | |  | |_   _____ _ __| |", ConsoleColor.Red);
+            WriteColoredLine(@"| | |_ |/ _` | '_ ` _ \ / _ \ | |  | \ \ / / _ \ '__| |", ConsoleColor.Red);
+            WriteColoredLine(@"| |__| | (_| | | | | | |  __/ | |__| |\ V /  __/ |  |_|", ConsoleColor.Red);
+            WriteColoredLine(@" \_____|\__,_|_| |_| |_|\___|  \____/  \_/ \___|_|  (_)", ConsoleColor.Red);
         }
     }
 }

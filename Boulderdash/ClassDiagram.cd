@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Boulderdash.Program">
-    <Position X="1.5" Y="2.5" Width="1.5" />
+    <Position X="1.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQ=</HashCode>
       <FileName>Program.cs</FileName>
@@ -11,24 +11,109 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Boulderdash.Game">
-    <Position X="4.25" Y="2.5" Width="1.5" />
+    <Position X="4.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>IAAAAAAAACAAAAAAAAAABEAAAAAAAAQAAAAAACAAAAA=</HashCode>
       <FileName>app\Game.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_inputView" />
+      <Field Name="_outputView" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Boulderdash.app.views.InputView" Collapsed="true">
-    <Position X="3.5" Y="0.5" Width="1.5" />
+  <Class Name="Boulderdash.app.views.InputView">
+    <Position X="3.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAABA=</HashCode>
       <FileName>app\views\InputView.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Boulderdash.app.views.OutputView" Collapsed="true">
-    <Position X="6" Y="0.5" Width="1.5" />
+  <Class Name="Boulderdash.app.views.OutputView">
+    <Position X="5.25" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAABA=</HashCode>
       <FileName>app\views\OutputView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boulderdash.app.models.Level">
+    <Position X="4.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACEAAAAAAAQBAAQAAAAAAAAAAABAAEAAAAA=</HashCode>
+      <FileName>app\models\Level.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Start" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Boulderdash.app.models.Tile">
+    <Position X="7.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAEAAAAAAAAAAAAQAAAACAAIgAAACACAgAAACAA=</HashCode>
+      <FileName>app\models\Tile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boulderdash.app.models.Moveable">
+    <Position X="10.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app\models\Moveable.cs</FileName>
+      <NewMemberFileName>app\models\Entity.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boulderdash.app.models.Wall" Collapsed="true">
+    <Position X="3" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>app\models\Wall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boulderdash.app.models.Steelwall" Collapsed="true">
+    <Position X="3" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>app\models\Steelwall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boulderdash.app.models.Mud" Collapsed="true">
+    <Position X="5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>app\models\Mud.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boulderdash.app.models.Air" Collapsed="true">
+    <Position X="7" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>app\models\Air.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boulderdash.app.models.Boulder" Collapsed="true">
+    <Position X="7.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAACAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>app\models\Boulder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boulderdash.app.models.Diamond" Collapsed="true">
+    <Position X="9.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>app\models\Diamond.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boulderdash.app.models.Firefly" Collapsed="true">
+    <Position X="11.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAACAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>app\models\Firefly.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boulderdash.app.models.Rockford" Collapsed="true">
+    <Position X="13" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAACAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>app\models\Rockford.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

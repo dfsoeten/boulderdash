@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using Boulderdash.app.controller;
 using Boulderdash.app.models;
 using Boulderdash.app.views;
@@ -13,6 +14,7 @@ namespace Boulderdash
     {
         private LinkedList<Level> _levels;
         private LinkedListNode<Level> _selectedLevel;
+
         private InputView _inputView = new InputView();
         private OutputView _outputView = new OutputView();
 
@@ -50,6 +52,9 @@ namespace Boulderdash
                         _selectedLevel = _selectedLevel.Next ?? _selectedLevel;
                         _outputView.LevelSelector(_levels, _selectedLevel);
                         break;
+                    case ConsoleKey.Escape:
+                        Environment.Exit(0);
+                        break;
                 }
             }
         }
@@ -57,6 +62,32 @@ namespace Boulderdash
         //Start a level
         private void Start(Level level)
         {
+            //Show initial level
+            _outputView.Level(level);
+
+            while (!level.IsOver())
+            {
+                switch (_inputView.Level())
+                {
+                    case ConsoleKey.UpArrow:
+                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Top);
+                        break;
+                    case ConsoleKey.RightArrow:
+                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Right);
+                        break;
+                    case ConsoleKey.DownArrow:
+                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Bottom);
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Left);
+                        break;
+                }
+
+                level.MoveMoveables();
+                _outputView.Level(level);
+            }
+
+            _outputView.GameOver();
             Console.ReadKey();
         }
     }

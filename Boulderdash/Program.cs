@@ -12,7 +12,6 @@ namespace Boulderdash
 
         static void Main(string[] args) => _game = new Game();
     }
-
 }
 
 

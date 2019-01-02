@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="app\controller\Parser.cs" />
+    <Compile Include="app\enum\Direction.cs" />
     <Compile Include="app\Game.cs" />
+    <Compile Include="app\models\Air.cs" />
     <Compile Include="app\models\Boulder.cs" />
     <Compile Include="app\models\Diamond.cs" />
     <Compile Include="app\models\Entity.cs" />

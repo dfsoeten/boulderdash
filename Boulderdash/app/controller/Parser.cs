@@ -57,19 +57,21 @@ namespace Boulderdash.app.controller
             switch (c)
             {
                 case 'S': //Steelwall
-                    return new Tile(new Steelwall());
+                    return new Tile() { Entity = new Steelwall() };
                 case 'B': //Boulder
-                    Levels.Last.Value.Boulders.Add(tile = new Tile(new Boulder())); return tile;
+                    Levels.Last.Value.Boulders.Add(tile = new Tile() { Entity = new Boulder() }); return tile;
                 case 'M': //Mud
-                    return new Tile(new Mud());
+                    return new Tile() { Entity = new Mud() };
                 case 'F': //Firefly
-                    Levels.Last.Value.FireFlies.Add(tile = new Tile(new Firefly())); return tile;
+                    Levels.Last.Value.FireFlies.Add(tile = new Tile() { Entity = new Firefly() }); return tile;
                 case 'R': //Rockford
-                    return Levels.Last.Value.RockFord = new Tile(new Rockford());
+                    return Levels.Last.Value.RockFord = new Tile() { Entity = new Rockford() };
                 case 'D': //Diamond
-                    Levels.Last.Value.Diamonds.Add(tile = new Tile(new Diamond())); return tile;
+                    Levels.Last.Value.Diamonds.Add(tile = new Tile() { Entity = new Diamond() }); return tile;
+                case 'W':
+                    return new Tile() { Entity = new Wall() };
                 default: //Air
-                    return new Tile(null);
+                    return new Tile() { Entity = new Air() };
             }
         }
     }

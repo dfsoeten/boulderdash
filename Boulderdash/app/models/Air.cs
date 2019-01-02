@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace Boulderdash.app.models
 {
-    class Mud : Entity
+    class Air : Entity
     {
         public override char GetCharacter()
         {
-            return '#';
+            return ' ';
         }
 
         public override ConsoleColor GetColor()
         {
-            return ConsoleColor.DarkGray;
+            return ConsoleColor.White;
         }
 
-        //Destroy Mud
+        //Destroy Air
         public override void Destroy(Tile tile)
         {
-            tile.Entity = new Air();
+
         }
     }
 }
