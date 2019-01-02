@@ -12,20 +12,17 @@ using Boulderdash.app.models;
 
 namespace Boulderdash.app.controller
 {
-    class Parser
+    public class Parser
     {
-        //Relative path to the level directory
-        private readonly string _levelsPath = @"../../levels";
-
         //Create a linkedlist with level objects
         public LinkedList<Level> Levels { get; } = new LinkedList<Level>();
 
         //Parses all .txt level files in the levels directory
-        public Parser()
+        public Parser(string LevelsPath = @"../../levels")
         {
             Tile[][] tiles;
 
-            foreach (var fileName in new DirectoryInfo(_levelsPath).GetFiles("*.txt"))
+            foreach (var fileName in new DirectoryInfo(LevelsPath).GetFiles("*.txt"))
             {
                 //Create new level object
                 Levels.AddLast(new Level() { Name = Path.GetFileNameWithoutExtension(fileName.Name) });

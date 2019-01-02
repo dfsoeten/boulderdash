@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Boulderdash.app.models
 {
-    abstract class Entity : Tile
+    public abstract class Entity : Tile
     {
         public abstract char GetCharacter();
 

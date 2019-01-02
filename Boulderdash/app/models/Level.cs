@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Boulderdash.app.models
 {
-    class Level
+    public class Level
     {
         public string Name { get; set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Boulderdash.app.models
 {
-    class Tile
+    public class Tile
     {
         public Entity Entity { get; set; }
 
