@@ -12,11 +12,11 @@ namespace Boulderdash
 {
     public class Game
     {
-        private LinkedList<Level> _levels;
+        private readonly LinkedList<Level> _levels;
         private LinkedListNode<Level> _selectedLevel;
 
-        private InputView _inputView = new InputView();
-        private OutputView _outputView = new OutputView();
+        private readonly InputView _inputView = new InputView();
+        private readonly OutputView _outputView = new OutputView();
 
         //Start the game
         public Game()

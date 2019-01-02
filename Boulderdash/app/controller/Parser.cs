@@ -18,11 +18,11 @@ namespace Boulderdash.app.controller
         public LinkedList<Level> Levels { get; } = new LinkedList<Level>();
 
         //Parses all .txt level files in the levels directory
-        public Parser(string LevelsPath = @"../../levels")
+        public Parser(string levelsPath = @"../../levels")
         {
             Tile[][] tiles;
 
-            foreach (var fileName in new DirectoryInfo(LevelsPath).GetFiles("*.txt"))
+            foreach (var fileName in new DirectoryInfo(levelsPath).GetFiles("*.txt"))
             {
                 //Create new level object
                 Levels.AddLast(new Level() { Name = Path.GetFileNameWithoutExtension(fileName.Name) });
