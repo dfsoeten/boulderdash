@@ -15,7 +15,7 @@ namespace Boulderdash.app.controller
     class Parser
     {
         //Relative path to the level directory
-        private readonly string _levelsPath = @"..\..\levels";
+        private readonly string _levelsPath = @"../../levels";
 
         //Create a linkedlist with level objects
         public LinkedList<Level> Levels { get; } = new LinkedList<Level>();
@@ -31,7 +31,7 @@ namespace Boulderdash.app.controller
                 Levels.AddLast(new Level() { Name = Path.GetFileNameWithoutExtension(fileName.Name) });
 
                 //Create tiles array object
-                tiles = File.ReadAllLines($@"{_levelsPath}\{fileName}").Select(l => l.ToCharArray().Select(c => CreateTile(c)).ToArray()).ToArray();
+                tiles = File.ReadAllLines($@"{fileName}").Select(l => l.ToCharArray().Select(c => CreateTile(c)).ToArray()).ToArray();
 
                 //Set start tile
                 Levels.Last.Value.Start = tiles[0][0];

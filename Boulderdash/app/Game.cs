@@ -42,7 +42,7 @@ namespace Boulderdash
             {
                 switch (_inputView.LevelSelector())
                 {
-                    case ConsoleKey.Enter:
+                    case ConsoleKey.Spacebar:
                         return _selectedLevel.Value;
                     case ConsoleKey.UpArrow:
                         _selectedLevel = _selectedLevel.Previous ?? _selectedLevel;

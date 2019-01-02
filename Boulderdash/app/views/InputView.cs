@@ -18,8 +18,8 @@ namespace Boulderdash.app.views
                         return ConsoleKey.UpArrow;
                     case ConsoleKey.DownArrow:
                         return ConsoleKey.DownArrow;
-                    case ConsoleKey.Enter:
-                        return ConsoleKey.Enter;
+                    case ConsoleKey.Spacebar:
+                        return ConsoleKey.Spacebar;
                     case ConsoleKey.Escape:
                         return ConsoleKey.Escape;
                 }
