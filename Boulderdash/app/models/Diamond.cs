@@ -19,7 +19,7 @@ namespace Boulderdash.app.models
         }
 
         //Move Diamond
-        public override Tile Move(double et, Tile from, Tile to)
+        public override Tile Move(Tile @from, Tile to = null)
         {
             return from;
         }

@@ -8,8 +8,6 @@ namespace Boulderdash.app.models
 {
     class Rockford : Moveable
     {
-        public int Diamonds { get; set; } = 0;
-
         public override char GetCharacter()
         {
             return 'R';
@@ -21,10 +19,16 @@ namespace Boulderdash.app.models
         }
 
         //Move rockford
-        public override Tile Move(double et, Tile from, Tile to)
+        public override Tile Move(Tile from, Tile to)
         {
-            if (to.IsMud() || to.IsAir())
-                return Swap(from, to);
+            if (to.Is<Mud>() || to.Is<Air>())
+                return Trail(from, to);
+
+            if (to.Is<Diamond>())
+            {
+                return Trail(from, to);
+            }
+                
 
 
 //            {

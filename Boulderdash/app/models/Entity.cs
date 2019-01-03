@@ -8,12 +8,15 @@ namespace Boulderdash.app.models
 {
     public abstract class Entity : Tile
     {
+        public bool Destroyed = false;
+        
         public abstract char GetCharacter();
 
         public abstract ConsoleColor GetColor();
 
-        public abstract void Destroy(Tile tile);
+        public virtual void Destroy(Tile tile) { Destroyed = true; }
+        
 
-        public virtual Tile Move(double et, Tile from, Tile to = null) { return from; }
+        public virtual Tile Move(Tile @from, Tile to = null) { return from; }
     }
 }

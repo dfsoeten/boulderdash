@@ -18,7 +18,7 @@ namespace Boulderdash.app.models
             return ConsoleColor.DarkRed;
         }
 
-        public override Tile Move(double et, Tile from, Tile to)
+        public override Tile Move(Tile @from, Tile to = null)
         {
             return from;
         }

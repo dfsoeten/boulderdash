@@ -72,23 +72,23 @@ namespace Boulderdash
                     switch (_inputView.Level())
                     {
                         case ConsoleKey.UpArrow:
-                            level.RockFord = level.RockFord.Entity.Move(0,level.RockFord, level.RockFord.Top);
+                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Top);
                             break;
                         case ConsoleKey.RightArrow:
-                            level.RockFord = level.RockFord.Entity.Move(0,level.RockFord, level.RockFord.Right);
+                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Right);
                             break;
                         case ConsoleKey.DownArrow:
-                            level.RockFord = level.RockFord.Entity.Move(0,level.RockFord, level.RockFord.Bottom);
+                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Bottom);
                             break;
                         case ConsoleKey.LeftArrow:
-                            level.RockFord = level.RockFord.Entity.Move(0,level.RockFord, level.RockFord.Left);
+                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Left);
                             break;
                     }    
                 }
                 
                 if ((level.ElapsedTime = (DateTime.Now - timeSinceLastFrame).TotalMilliseconds) >= 1000.0 / 24)
                 {
-                    level.MoveMoveables();
+                    level.Moveables.ForEach(m => m.Entity.Move(m));
                     _outputView.Level(level);
                     
                     timeSinceLastFrame = DateTime.Now;

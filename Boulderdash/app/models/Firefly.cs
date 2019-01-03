@@ -10,7 +10,7 @@ namespace Boulderdash.app.models
 {
     class Firefly : Moveable
     {
-        private Direction _direction = Direction.Top;
+        //private Direction _direction = Direction.Top;
 
         public override char GetCharacter()
         {
@@ -22,7 +22,7 @@ namespace Boulderdash.app.models
             return ConsoleColor.DarkYellow;
         }
 
-        public override Tile Move(double et, Tile from, Tile to)
+        public override Tile Move(Tile @from, Tile to = null)
         {
             return from;
         }

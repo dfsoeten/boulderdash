@@ -28,7 +28,7 @@ namespace Boulderdash.app.controller
                 Levels.AddLast(new Level() { Name = Path.GetFileNameWithoutExtension(fileName.Name) });
 
                 //Create tiles array object
-                tiles = File.ReadAllLines($@"{fileName}").Select(l => l.ToCharArray().Select(c => CreateTile(c)).ToArray()).ToArray();
+                tiles = File.ReadAllLines($@"{fileName}").Select(l => l.ToCharArray().Select(CreateTile).ToArray()).ToArray();
 
                 //Set start tile
                 Levels.Last.Value.Start = tiles[0][0];
@@ -56,15 +56,15 @@ namespace Boulderdash.app.controller
                 case 'S': //Steelwall
                     return new Tile() { Entity = new Steelwall() };
                 case 'B': //Boulder
-                    Levels.Last.Value.Boulders.Add(tile = new Tile() { Entity = new Boulder() }); return tile;
+                    Levels.Last.Value.Moveables.Add(tile = new Tile() { Entity = new Boulder() }); return tile;
                 case 'M': //Mud
                     return new Tile() { Entity = new Mud() };
                 case 'F': //Firefly
-                    Levels.Last.Value.FireFlies.Add(tile = new Tile() { Entity = new Firefly() }); return tile;
+                    Levels.Last.Value.Moveables.Add(tile = new Tile() { Entity = new Firefly() }); return tile;
                 case 'R': //Rockford
-                    return Levels.Last.Value.RockFord = new Tile() { Entity = new Rockford() };
+                    return Levels.Last.Value.RockFord = new Tile() { Entity = new Rockford(), Level = Levels.Last.Value };
                 case 'D': //Diamond
-                    Levels.Last.Value.Diamonds.Add(tile = new Tile() { Entity = new Diamond() }); return tile;
+                    Levels.Last.Value.Moveables.Add(tile = new Tile() { Entity = new Diamond() }); return tile;
                 case 'W':
                     return new Tile() { Entity = new Wall() };
                 default: //Air

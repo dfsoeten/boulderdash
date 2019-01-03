@@ -9,9 +9,9 @@ namespace Boulderdash.app.models
 {
     public abstract class Moveable : Entity
     {
-        public abstract override Tile Move(double et, Tile from, Tile to = null);
+        public abstract override Tile Move(Tile @from, Tile to = null);
 
-        protected Tile Swap(Tile from, Tile to)
+        protected Tile Trail(Tile from, Tile to)
         {
             to.Entity = from.Entity;
             from.Entity = new Air();
