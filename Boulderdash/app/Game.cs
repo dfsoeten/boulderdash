@@ -62,29 +62,38 @@ namespace Boulderdash
         //Start a level
         private void Start(Level level)
         {
-            //Show initial level
-            _outputView.Level(level);
-
+            DateTime timeSinceLastFrame = DateTime.Now;
+            double counter = 0;
+            
+            //Start Game Loop
             while (!level.IsOver())
             {
-                switch (_inputView.Level())
+                while (Console.KeyAvailable)
                 {
-                    case ConsoleKey.UpArrow:
-                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Top);
-                        break;
-                    case ConsoleKey.RightArrow:
-                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Right);
-                        break;
-                    case ConsoleKey.DownArrow:
-                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Bottom);
-                        break;
-                    case ConsoleKey.LeftArrow:
-                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Left);
-                        break;
+                    switch (_inputView.Level())
+                    {
+                        case ConsoleKey.UpArrow:
+                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Top);
+                            break;
+                        case ConsoleKey.RightArrow:
+                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Right);
+                            break;
+                        case ConsoleKey.DownArrow:
+                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Bottom);
+                            break;
+                        case ConsoleKey.LeftArrow:
+                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Left);
+                            break;
+                    }    
                 }
-
-                level.MoveMoveables();
-                _outputView.Level(level);
+                
+                if ((level.ElapsedTime = (DateTime.Now - timeSinceLastFrame).TotalMilliseconds) >= 1000.0 / 24)
+                {
+                    level.MoveMoveables();
+                    _outputView.Level(level);
+                    
+                    timeSinceLastFrame = DateTime.Now;
+                }     
             }
 
             _outputView.GameOver();
