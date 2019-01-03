@@ -63,7 +63,6 @@ namespace Boulderdash
         private void Start(Level level)
         {
             DateTime timeSinceLastFrame = DateTime.Now;
-            double counter = 0;
             
             //Start Game Loop
             while (!level.IsOver())
@@ -73,16 +72,16 @@ namespace Boulderdash
                     switch (_inputView.Level())
                     {
                         case ConsoleKey.UpArrow:
-                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Top);
+                            level.RockFord = level.RockFord.Entity.Move(0,level.RockFord, level.RockFord.Top);
                             break;
                         case ConsoleKey.RightArrow:
-                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Right);
+                            level.RockFord = level.RockFord.Entity.Move(0,level.RockFord, level.RockFord.Right);
                             break;
                         case ConsoleKey.DownArrow:
-                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Bottom);
+                            level.RockFord = level.RockFord.Entity.Move(0,level.RockFord, level.RockFord.Bottom);
                             break;
                         case ConsoleKey.LeftArrow:
-                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Left);
+                            level.RockFord = level.RockFord.Entity.Move(0,level.RockFord, level.RockFord.Left);
                             break;
                     }    
                 }

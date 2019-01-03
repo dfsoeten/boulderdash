@@ -22,13 +22,9 @@ namespace Boulderdash.app.models
 
         public void MoveMoveables()
         {    
-            //Move Fireflies
-            List<Tile> MovedFireflies = new List<Tile>();
-            foreach (Tile FireFly in FireFlies)
-                if (!FireFly.IsAir()) //@todo: check if the entity can move using elapsedtime
-                    MovedFireflies.Add(FireFly.Entity.Move(FireFly));
-
-            FireFlies = MovedFireflies;
+            //Move Entities
+            foreach (Tile moveable in FireFlies.Concat(Boulders).Concat(Diamonds))
+                moveable.Entity.Move(ElapsedTime, moveable);
         }
 
         public bool IsOver()

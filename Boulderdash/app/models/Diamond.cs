@@ -19,18 +19,8 @@ namespace Boulderdash.app.models
         }
 
         //Move Diamond
-        public override Tile Move(Tile from, Tile to)
+        public override Tile Move(double et, Tile from, Tile to)
         {
-            if (to.IsAir() && from.Bottom.IsAir())
-                Move(from, to.Bottom);
-
-            if (to.IsAir())
-            {
-                to.Entity = from.Entity;
-                from.Entity = new Air();
-                return to;
-            }
-
             return from;
         }
 

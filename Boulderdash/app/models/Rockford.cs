@@ -21,33 +21,39 @@ namespace Boulderdash.app.models
         }
 
         //Move rockford
-        public override Tile Move(Tile from, Tile to)
+        public override Tile Move(double et, Tile from, Tile to)
         {
-            if (to.IsMud() || to.IsAir() || to.IsDiamond())
-            { 
-                to.Entity = from.Entity;
-                from.Entity = new Air();
-                return to;
-            }
+            if (to.IsMud() || to.IsAir())
+                return Swap(from, to);
 
-            if (to.IsBoulder())
-            {
-                if (from.Left == to && to.Left.IsAir())
-                {
-                    to.Entity.Move(to, to.Left);
-                    to.Entity = from.Entity;
-                    from.Entity = new Air();
-                    return to;
-                }
 
-                if (from.Right == to && to.Right.IsAir())
-                {
-                    to.Entity.Move(to, to.Right);
-                    to.Entity = from.Entity;
-                    from.Entity = new Air();
-                    return to;
-                }
-            }
+//            {
+//                
+//                
+//                to.Entity = from.Entity;
+//                from.Entity = new Air();
+//                return to;
+//            }
+            
+
+//            if (to.IsBoulder())
+//            {
+//                if (from.Left == to && to.Left.IsAir())
+//                {
+//                    to.Entity.Move(to, to.Left);
+//                    to.Entity = from.Entity;
+//                    from.Entity = new Air();
+//                    return to;
+//                }
+//
+//                if (from.Right == to && to.Right.IsAir())
+//                {
+//                    to.Entity.Move(to, to.Right);
+//                    to.Entity = from.Entity;
+//                    from.Entity = new Air();
+//                    return to;
+//                }
+//            }
 
             return from;
         }

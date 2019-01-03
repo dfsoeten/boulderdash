@@ -18,28 +18,8 @@ namespace Boulderdash.app.models
             return ConsoleColor.DarkRed;
         }
 
-        public override Tile Move(Tile from, Tile to)
+        public override Tile Move(double et, Tile from, Tile to)
         {
-            if (to.IsAir() && to.Bottom.IsAir())
-                Move(from, to.Bottom);
-
-            if (to.Bottom.IsBoulder())
-            {
-                if (to.Bottom.Right.IsAir())
-                    Move(from, to.Bottom.Right);
-
-                if (to.Bottom.Left.IsAir())
-                    Move(from, to.Bottom.Left);
-            }
-                
-
-            if (to.IsAir())
-            {
-                to.Entity = from.Entity;
-                from.Entity = new Air();
-                return to;
-            }
-
             return from;
         }
 
