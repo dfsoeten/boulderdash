@@ -28,38 +28,21 @@ namespace Boulderdash.app.models
             {
                 return Trail(from, to);
             }
-                
-            
-                
 
+            if (to.Is<Boulder>())
+            {
+                if (from.Left == to && to.Left.Is<Air>())
+                {
+                    to.Entity.Move(to, to.Left);
+                    return Trail(from, to);
 
-//            {
-//                
-//                
-//                to.Entity = from.Entity;
-//                from.Entity = new Air();
-//                return to;
-//            }
-            
-
-//            if (to.IsBoulder())
-//            {
-//                if (from.Left == to && to.Left.IsAir())
-//                {
-//                    to.Entity.Move(to, to.Left);
-//                    to.Entity = from.Entity;
-//                    from.Entity = new Air();
-//                    return to;
-//                }
-//
-//                if (from.Right == to && to.Right.IsAir())
-//                {
-//                    to.Entity.Move(to, to.Right);
-//                    to.Entity = from.Entity;
-//                    from.Entity = new Air();
-//                    return to;
-//                }
-//            }
+                }
+                if (from.Right == to && to.Right.Is<Air>())
+                {
+                    to.Entity.Move(to, to.Right);
+                    return Trail(from, to);
+                }
+            }            
 
             return from;
         }

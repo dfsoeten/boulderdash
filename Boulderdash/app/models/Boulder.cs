@@ -18,8 +18,11 @@ namespace Boulderdash.app.models
             return ConsoleColor.DarkRed;
         }
 
-        public override Tile Move(Tile @from, Tile to = null)
+        public override Tile Move(Tile from, Tile to = null)
         {
+            if (to.Is<Air>())
+                return Trail(from, to);
+         
             return from;
         }
 
