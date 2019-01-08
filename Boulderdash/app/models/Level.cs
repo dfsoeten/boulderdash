@@ -18,7 +18,19 @@ namespace Boulderdash.app.models
 
         public Tile RockFord { get; set; } 
         
-        public List<Tile> Moveables { get; set; } = new List<Tile>();
+        private List<Tile> _diamonds = new List<Tile>();
+        public List<Tile> Diamonds {
+            get
+            {
+                _diamonds.ToList().ForEach(d => { if (d.Is<Air>() || d.Is<Rockford>()) _diamonds.Remove(d); });
+                return _diamonds;
+            }
+            set => _diamonds = value;
+        }
+        
+        public List<Tile> Boulders { get; set; } = new List<Tile>();
+        
+        public List<Tile> Fireflies { get; set; } = new List<Tile>();
 
         public bool IsOver()
         {

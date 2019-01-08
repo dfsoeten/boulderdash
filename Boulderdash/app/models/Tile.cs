@@ -14,8 +14,6 @@ namespace Boulderdash.app.models
         public Tile Right { get; set; }
         public Tile Bottom { get; set; }
         public Tile Left { get; set; }
-    
-        public Level Level { get; set; }
 
         public char Character => Entity.GetCharacter();
 

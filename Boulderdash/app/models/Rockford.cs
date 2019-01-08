@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Boulderdash.app.models
 {
-    class Rockford : Moveable
+    public class Rockford : Moveable
     {
         public override char GetCharacter()
         {
@@ -28,6 +28,8 @@ namespace Boulderdash.app.models
             {
                 return Trail(from, to);
             }
+                
+            
                 
 
 

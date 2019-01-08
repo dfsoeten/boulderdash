@@ -8,7 +8,7 @@ namespace Boulderdash.app.models
 {
     public abstract class Entity : Tile
     {
-        public bool Destroyed = false;
+        private bool Destroyed = false;
         
         public abstract char GetCharacter();
 

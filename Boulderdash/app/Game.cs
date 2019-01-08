@@ -88,7 +88,9 @@ namespace Boulderdash
                 
                 if ((level.ElapsedTime = (DateTime.Now - timeSinceLastFrame).TotalMilliseconds) >= 1000.0 / 24)
                 {
-                    level.Moveables.ForEach(m => m.Entity.Move(m));
+                    //level.Boulders.ForEach(m => m.Entity.Move(m));
+                    level.Diamonds.ForEach(m => m.Entity.Move(m));
+                    //level.Fireflies.ForEach(m => m.Entity.Move(m));
                     _outputView.Level(level);
                     
                     timeSinceLastFrame = DateTime.Now;
