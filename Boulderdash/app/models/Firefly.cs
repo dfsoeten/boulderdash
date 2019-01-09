@@ -24,47 +24,52 @@ namespace Boulderdash.app.models
 
         public override Tile Move(Tile from, Tile to)
         {
-            if(to == null)
-                switch (_direction)
-                {
-                    case Direction.Top:
-                        return Move(from, from.Top);
-                    case Direction.Right:
-                        return Move(from, from.Right);
-                    case Direction.Bottom:
-                        return Move(from, from.Bottom);
-                    case Direction.Left:
-                        return Move(from, from.Left);
-                }
+            if (to == null)
+            {
+                if (!(to = GetNextDirectionTile(from)).Is<Air>())
+                    ChangeDirection();
+                
+                return Move(from, to);
+            }
 
             if (to.Is<Air>())
-            {
-                to.Entity = from.Entity;
-                from.Entity = new Air();
-                return to;
-            }
-            else
-            {
-                switch (_direction)
-                {
-                    case Direction.Top:
-                        _direction = Direction.Right;
-                        break;
-                    case Direction.Right:
-                        _direction = Direction.Bottom;
-                        break;
-                    case Direction.Bottom:
-                        _direction = Direction.Left;
-                        break;
-                    case Direction.Left:
-                        _direction = Direction.Top;
-                        break;
-                }
+                return Trail(from, to);
 
-                return Move(from, null);
+            return from;
+        }
+
+        //Get the tile from a direction
+        private Tile GetNextDirectionTile(Tile from)
+        {
+            switch (_direction)
+            {
+                case Direction.Top:
+                    return from.Top;
+                case Direction.Right:
+                    return from.Right;
+                case Direction.Bottom:
+                    return from.Bottom;
+                case Direction.Left:
+                    return from.Left;
             }
 
             return from;
+        }
+        
+        //Change the direction of the firefly
+        private void ChangeDirection()
+        {
+            switch (_direction)
+            {
+                case Direction.Top:
+                    _direction = Direction.Right; break;
+                case Direction.Right:
+                    _direction = Direction.Bottom; break;
+                case Direction.Bottom:
+                    _direction = Direction.Left; break;
+                case Direction.Left:
+                    _direction = Direction.Top; break;
+            }
         }
 
         //Destroy FireFly

@@ -24,11 +24,15 @@ namespace Boulderdash.app.models
 
         public void MoveMoveables()
         {
-            //Move each moveable three times every "tick"
-            
-            //Move Fireflies
-            foreach (Tile FireFly in new List<Tile>(Fireflies))
-                if (FireFly.Is<Firefly>()) Fireflies.Add(FireFly.Entity.Move(FireFly));
+            for (int i = 0; i < 3; i++)
+            {
+                List<Tile> MovedFireflies = new List<Tile>();
+                foreach (Tile FireFly in Fireflies)
+                    if (FireFly.Is<Firefly>())
+                        MovedFireflies.Add(FireFly.Entity.Move(FireFly));
+
+                Fireflies = MovedFireflies;    
+            }
         }
 
         public bool IsOver()
