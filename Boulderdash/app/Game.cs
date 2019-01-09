@@ -62,39 +62,30 @@ namespace Boulderdash
         //Start a level
         private void Start(Level level)
         {
-            DateTime timeSinceLastFrame = DateTime.Now;
+            //Show initial level 
+            _outputView.Level(level);
             
             //Start Game Loop
             while (!level.IsOver())
             {
-                while (Console.KeyAvailable)
+                switch (_inputView.Level())
                 {
-                    switch (_inputView.Level())
-                    {
-                        case ConsoleKey.UpArrow:
-                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Top);
-                            break;
-                        case ConsoleKey.RightArrow:
-                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Right);
-                            break;
-                        case ConsoleKey.DownArrow:
-                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Bottom);
-                            break;
-                        case ConsoleKey.LeftArrow:
-                            level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Left);
-                            break;
-                    }    
-                }
+                    case ConsoleKey.UpArrow:
+                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Top);
+                        break;
+                    case ConsoleKey.RightArrow:
+                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Right);
+                        break;
+                    case ConsoleKey.DownArrow:
+                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Bottom);
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Left);
+                        break;
+                }       
                 
-                if ((level.ElapsedTime = (DateTime.Now - timeSinceLastFrame).TotalMilliseconds) >= 1000.0 / 24)
-                {
-                    //level.Boulders.ForEach(m => m.Entity.Move(m));
-                    level.Diamonds.ForEach(m => m.Entity.Move(m));
-                    //level.Fireflies.ForEach(m => m.Entity.Move(m));
-                    _outputView.Level(level);
-                    
-                    timeSinceLastFrame = DateTime.Now;
-                }     
+                level.MoveMoveables();
+                _outputView.Level(level);     
             }
 
             _outputView.GameOver();

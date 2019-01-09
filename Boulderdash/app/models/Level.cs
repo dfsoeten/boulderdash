@@ -9,28 +9,27 @@ using System.Threading.Tasks;
 namespace Boulderdash.app.models
 {
     public class Level
-    {
+    {   
         public string Name { get; set; }
 
-        public Tile Start { get; set; }
+        public Tile Start { get; set; } 
 
-        public double ElapsedTime { private get; set; }
+        public Tile RockFord { get; set; }
 
-        public Tile RockFord { get; set; } 
-        
-        private List<Tile> _diamonds = new List<Tile>();
-        public List<Tile> Diamonds {
-            get
-            {
-                _diamonds.ToList().ForEach(d => { if (d.Is<Air>() || d.Is<Rockford>()) _diamonds.Remove(d); });
-                return _diamonds;
-            }
-            set => _diamonds = value;
-        }
-        
+        public List<Tile> Diamonds { get; set; } = new List<Tile>();
+
         public List<Tile> Boulders { get; set; } = new List<Tile>();
         
         public List<Tile> Fireflies { get; set; } = new List<Tile>();
+
+        public void MoveMoveables()
+        {
+            //Move each moveable three times every "tick"
+            
+            //Move Fireflies
+            foreach (Tile FireFly in new List<Tile>(Fireflies))
+                if (FireFly.Is<Firefly>()) Fireflies.Add(FireFly.Entity.Move(FireFly));
+        }
 
         public bool IsOver()
         {

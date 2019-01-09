@@ -49,27 +49,37 @@ namespace Boulderdash.app.controller
         //Create tile objects with the right entity objects
         private Tile CreateTile(char c)
         {
-            Tile tile;
-
+            Tile tile = new Tile() { Level = Levels.Last() };
+    
             switch (c)
             {
                 case 'S': //Steelwall
-                    return new Tile() { Entity = new Steelwall() };
+                    tile.Entity = new Steelwall();
+                    break;
                 case 'B': //Boulder
-                    Levels.Last.Value.Boulders.Add(tile = new Tile() { Entity = new Boulder() }); return tile;
+                    tile.Entity = new Boulder(); Levels.Last().Boulders.Add(tile);
+                    break;
                 case 'M': //Mud
-                    return new Tile() { Entity = new Mud() };
+                    tile.Entity = new Mud();
+                    break;
                 case 'F': //Firefly
-                    Levels.Last.Value.Fireflies.Add(tile = new Tile() { Entity = new Firefly() }); return tile;
+                    tile.Entity = new Firefly(); Levels.Last().Fireflies.Add(tile);
+                    break;
                 case 'R': //Rockford
-                    return Levels.Last.Value.RockFord = new Tile() { Entity = new Rockford() };
+                    tile.Entity = new Rockford(); Levels.Last().RockFord = tile;
+                    break;
                 case 'D': //Diamond
-                    Levels.Last.Value.Diamonds.Add(tile = new Tile() { Entity = new Diamond() }); return tile;
-                case 'W':
-                    return new Tile() { Entity = new Wall() };
+                    tile.Entity = new Diamond(); Levels.Last().Diamonds.Add(tile);
+                    break;
+                case 'W': //Wall
+                    tile.Entity = new Wall();
+                    break;
                 default: //Air
-                    return new Tile() { Entity = new Air() };
+                    tile.Entity = new Air();
+                    break;
             }
+            
+            return tile;
         }
     }
 }

@@ -8,6 +8,8 @@ namespace Boulderdash.app.models
 {
     public class Tile
     {
+        public Level Level { get; set; }
+        
         public Entity Entity { get; set; }
 
         public Tile Top { get; set; }

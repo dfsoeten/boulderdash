@@ -43,6 +43,8 @@ namespace Boulderdash.app.views
                         return ConsoleKey.LeftArrow;
                     case ConsoleKey.Escape:
                         return ConsoleKey.Escape;
+                    case ConsoleKey.Spacebar:
+                        return ConsoleKey.Spacebar; // Skip a turn
                 }
             }
         }
