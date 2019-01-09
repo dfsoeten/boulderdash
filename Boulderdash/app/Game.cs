@@ -84,7 +84,7 @@ namespace Boulderdash
                         break;
                 }       
                 
-                level.MoveMoveables();
+                level.Tick();
                 _outputView.Level(level);     
             }
 

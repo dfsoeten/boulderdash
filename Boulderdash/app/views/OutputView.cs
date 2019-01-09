@@ -44,7 +44,12 @@ namespace Boulderdash.app.views
         {
             //Clear the console
             Console.Clear();
-
+            
+            //Draw Time & Score
+            WriteColoredLine($"Time: {level.Time} Score: {level.Score}", ConsoleColor.Yellow);
+            WriteColoredLine("========================================", ConsoleColor.DarkBlue);
+            
+                
             Tile currentNode = level.Start, startingNode = level.Start;
 
             while (currentNode != null)

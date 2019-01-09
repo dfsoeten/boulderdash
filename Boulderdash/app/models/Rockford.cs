@@ -26,7 +26,6 @@ namespace Boulderdash.app.models
 
             if (to.Is<Diamond>())
             {
-                Level.Diamonds.Remove(to);
                 return Trail(from, to);
             }
 
