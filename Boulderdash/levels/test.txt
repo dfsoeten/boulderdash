@@ -1,22 +1,22 @@
 ﻿SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-S                                      S
-S                                      S
-S   B       RB                         S
+S   D                                  S
+S   B                                  S
+S   D       RB                         S
 S   B      BMM                         S
 S MMMMM MMMMMM                   D     S
 S M   M M   MM                         S
 S M   M M   MM                 B       S
-S MF  M MF MMM                         S
+S MF  M MF MMM          H              S
 S M   M M   MM                         S
 S M   M M   MM                         S
-S MMMMM MMMMMM                         S
-S                                      S
-S                                      S
-S                                      S
-S                                      S
-S                                      S
-S                           X          S
-S                                      S
-S             F                        S
-S                D                     S
+S MMMMM MMMMMM M                       S
+S            M M                       S
+S            M M                       S
+S            M M                       S
+S            M M                       S
+S            M M                       S
+S            M M              X        S
+S            M                         S
+S            M F                       S
+S             M   D                    S
 SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS

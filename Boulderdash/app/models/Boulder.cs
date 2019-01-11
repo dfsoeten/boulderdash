@@ -24,33 +24,11 @@ namespace Boulderdash.app.models
             if (from.Bottom.Is<Rockford>())
                 Tile.Level.Lost = true;
             
-            //Destroy a firefly if a rock falls on it
-            if (from.Bottom.Is<Firefly>())
-            {
-                from.Bottom.Entity.Destroy();
-                return Slide(from, from.Bottom);
-            }
-                
-            
-            //Boulders fall down
-            if (from.Bottom.Is<Air>())
-                return Slide(from, from.Bottom);
-            
-            //Boulders slide of one another
-            if (from.Bottom.Is<Boulder>())
-            {
-                if (from.Bottom.Right.Is<Air>())
-                    return Slide(from, from.Bottom.Right);
-
-                if (from.Bottom.Left.Is<Air>())
-                    return Slide(from, from.Bottom.Left);
-            }
-            
             //Pushed by rockford
             if (to != null && to.Is<Air>())
                 return Slide(from, to);
-         
-            return from;
+            
+            return base.Move(from, to);;
         }
 
         //Destroy Boulder

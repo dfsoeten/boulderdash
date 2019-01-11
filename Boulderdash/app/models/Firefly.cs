@@ -10,7 +10,7 @@ namespace Boulderdash.app.models
 {
     class Firefly : Moveable
     {
-        private Direction _direction = Direction.Top;
+        private Direction _direction = Direction.Left;
 
         public override char GetCharacter()
         {
@@ -30,17 +30,14 @@ namespace Boulderdash.app.models
             
             //Change direction if the firefly can't move
             if (to == null)
-            {
-                if (!(to = GetNextDirectionTile(from)).Is<Air>())
-                    ChangeDirection();
+            {   
+                if(!(to = GetNextDirectionTile(from)).Is<Air>())
+                    Turn();
                 
                 return Move(from, to);
             }
 
-            if (to.Is<Air>())
-                return Slide(from, to);
-
-            return from;
+            return to.Is<Air>() ? Slide(from, to) : from;
         }
 
         //Get the tile from a direction
@@ -62,18 +59,19 @@ namespace Boulderdash.app.models
         }
         
         //Change the direction of the firefly
-        private void ChangeDirection()
+        private void Turn()
         {
             switch (_direction)
             {
+                case Direction.Left:
+                    _direction = Direction.Top; break;
                 case Direction.Top:
                     _direction = Direction.Right; break;
                 case Direction.Right:
                     _direction = Direction.Bottom; break;
                 case Direction.Bottom:
                     _direction = Direction.Left; break;
-                case Direction.Left:
-                    _direction = Direction.Top; break;
+                    
             }
         }
 

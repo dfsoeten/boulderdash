@@ -18,12 +18,6 @@ namespace Boulderdash.app.models
             return ConsoleColor.Cyan;
         }
 
-        //Move Diamond
-        public override Tile Move(Tile from, Tile to = null)
-        {
-            return from;
-        }
-
         //Destroy Diamond
         public override void Destroy()
         {
