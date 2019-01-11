@@ -86,6 +86,11 @@ namespace Boulderdash.app.views
             //Clear the console
             Console.Clear();
             
+            //Draw Time & Score
+            WriteColoredLine("--------------------------------------------------------",    ConsoleColor.DarkBlue);
+            WriteColoredLine($"Final Score: {Math.Round(level.Score + (level.Time * 10))}", ConsoleColor.Yellow);
+            WriteColoredLine("--------------------------------------------------------\n",  ConsoleColor.DarkBlue);
+            
             WriteColoredLine(@"__     __         _            __          __         _ ", ConsoleColor.Green);
             WriteColoredLine(@"\ \   / /        ( )           \ \        / /        | |", ConsoleColor.Green);
             WriteColoredLine(@" \ \_/ /__  _   _|/__   _____   \ \  /\  / /__  _ __ | |", ConsoleColor.Green);
