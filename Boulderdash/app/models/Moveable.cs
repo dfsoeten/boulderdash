@@ -9,30 +9,28 @@ namespace Boulderdash.app.models
 {
     public abstract class Moveable : Entity
     {
-        public override Tile Move(Tile from, Tile to = null)
+        public override void Move(Tile @from, Tile to = null)
         {
             //Boulders fall down
             if (from.Bottom.Is<Air>())
-                return Slide(from, from.Bottom);
+                Slide(from, from.Bottom);
             
             //Boulders slide of one another
             if (from.Bottom.Is<Boulder>() || from.Bottom.Is<Diamond>())
             {
                 if (from.Bottom.Right.Is<Air>())
-                    return Slide(from, from.Bottom.Right);
+                    Slide(from, from.Bottom.Right);
 
                 if (from.Bottom.Left.Is<Air>())
-                    return Slide(from, from.Bottom.Left);
+                    Slide(from, from.Bottom.Left);
             }
             
             //Destroy a firefly if a rock falls on it
             if (from.Bottom.Is<Firefly>())
             {
                 from.Bottom.Entity.Destroy();
-                return Slide(from, from.Bottom);
+                Slide(from, from.Bottom);
             }  
-
-            return from;
         }
         
         protected Tile Dig(Tile from, Tile to)

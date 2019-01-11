@@ -6,7 +6,7 @@ S   B      BMM    M                    S
 S MMMMM MMMMMM    HM             D     S
 S M   M M   MM                         S
 S M   M M   MM                 B       S
-S MF  M MF MMM          H              S
+S MF  M MF MMM           H             S
 S M   M M   MM                         S
 S M   M M   MM                         S
 S MMMMM MMMMMM M                       S

@@ -46,7 +46,8 @@ namespace Boulderdash.app.models
                 if (hardenedMud.SurroundedBy<Mud>(hardenedMud) + hardenedMud.SurroundedBy<HardenedMud>(hardenedMud) < 2)
                 {
                     HardenedMuds.Remove(hardenedMud);
-                    Moveables.Add(hardenedMud.Entity = new Rubble{ Tile = hardenedMud });    
+                    hardenedMud.Entity = new Rubble { Tile = hardenedMud };
+                    Moveables.Add(hardenedMud);    
                 }                
             }
 

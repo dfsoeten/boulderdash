@@ -22,7 +22,7 @@ namespace Boulderdash.app.models
             return ConsoleColor.DarkYellow;
         }
 
-        public override Tile Move(Tile from, Tile to)
+        public override void Move(Tile @from, Tile to = null)
         {
             //Lose the game if you get hit by a firefly
             if (Tile.GetTileFromDirection(_direction, from).Is<Rockford>())
@@ -34,10 +34,11 @@ namespace Boulderdash.app.models
                 if(!(to = Tile.GetTileFromDirection(_direction, from)).Is<Air>())
                     Turn();
                 
-                return Move(from, to);
+                Move(from, to);
             }
 
-            return to.Is<Air>() ? Slide(from, to) : from;
+            if (to.Is<Air>())
+                Slide(from, to);
         }
         
         //Change the direction of the firefly

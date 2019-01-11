@@ -17,7 +17,7 @@ namespace Boulderdash.app.models
         }
 
         //Move rockford
-        public override Tile Move(Tile from, Tile to = null)
+        public override void Move(Tile @from, Tile to = null)
         {    
             //Win the game if you touch the exit
             if (to.Is<Exit>())
@@ -25,7 +25,7 @@ namespace Boulderdash.app.models
             
             //Dig through mud
             if (to.Is<Mud>() || to.Is<Air>())
-                return Dig(from, to);
+                Dig(from, to);
 
             //Dig through hardened mud if possible
             if (to.Is<HardenedMud>())
@@ -35,7 +35,7 @@ namespace Boulderdash.app.models
             if (to.Is<Diamond>())
             {
                 to.Entity.Destroy();
-                return Dig(from, to);
+                Dig(from, to);
             }
 
             //Push boulders
@@ -44,17 +44,15 @@ namespace Boulderdash.app.models
                 if (from.Left == to && to.Left.Is<Air>())
                 {
                     to.Entity.Move(to, to.Left);
-                    return Dig(from, to);
+                    Dig(from, to);
 
                 }
                 if (from.Right == to && to.Right.Is<Air>())
                 {
                     to.Entity.Move(to, to.Right);
-                    return Dig(from, to);
+                    Dig(from, to);
                 }
             }            
-
-            return from;
         }
 
         //Destroy Rockford

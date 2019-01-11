@@ -71,16 +71,16 @@ namespace Boulderdash
                 switch (_inputView.Level())
                 {
                     case ConsoleKey.UpArrow:
-                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Top);
+                        level.RockFord.Entity.Move(level.RockFord, level.RockFord.Top);
                         break;
                     case ConsoleKey.RightArrow:
-                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Right);
+                        level.RockFord.Entity.Move(level.RockFord, level.RockFord.Right);
                         break;
                     case ConsoleKey.DownArrow:
-                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Bottom);
+                        level.RockFord.Entity.Move(level.RockFord, level.RockFord.Bottom);
                         break;
                     case ConsoleKey.LeftArrow:
-                        level.RockFord = level.RockFord.Entity.Move(level.RockFord, level.RockFord.Left);
+                        level.RockFord.Entity.Move(level.RockFord, level.RockFord.Left);
                         break;
                 }       
                 

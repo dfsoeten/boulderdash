@@ -18,7 +18,7 @@ namespace Boulderdash.app.models
             return ConsoleColor.DarkRed;
         }
 
-        public override Tile Move(Tile from, Tile to = null)
+        public override void Move(Tile @from, Tile to = null)
         {
             //Lose the game if a boulder falls on rockford
             if (from.Bottom.Is<Rockford>())
@@ -26,9 +26,9 @@ namespace Boulderdash.app.models
             
             //Pushed by rockford
             if (to != null && to.Is<Air>())
-                return Slide(from, to);
+                Slide(from, to);
             
-            return base.Move(from, to);;
+            base.Move(@from, to);;
         }
 
         //Destroy Boulder
