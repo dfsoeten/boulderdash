@@ -12,71 +12,24 @@ namespace Boulderdash.app.models
     {   
         public string Name { get; set; }
 
-        public int Time { get; private set; } = 150;
+        public double Time { get; private set; } = 150;
 
-        public int Score { get; private set; } = 0;
+        public int Score { get; set; } = 0;
 
         public Tile Start { get; set; } 
 
         public Tile RockFord { get; set; }
-
-        private List<Tile> _diamonds = new List<Tile>();
         
-        public List<Tile> Diamonds {
-            get
-            {
-                _diamonds.ToList().ForEach(d => { if (!d.Is<Diamond>()){ _diamonds.Remove(d); Score += 10; } }); 
-                return _diamonds;
-            }
-        }
-
-        private List<Tile> _boulders = new List<Tile>();
-        
-        public List<Tile> Boulders {
-            get
-            {
-                _boulders.ToList().ForEach(b => { if (!b.Is<Boulder>()){ _diamonds.Remove(b); } }); 
-                return _boulders;
-            }
-        }
-        
-        private List<Tile> _fireflies = new List<Tile>();
-        
-        public List<Tile> Fireflies {
-            get
-            {
-                _fireflies.ToList().ForEach(f => { if (!f.Is<Firefly>()){ _fireflies.Remove(f); Score += 100; } }); 
-                return _fireflies;
-            }
-        }
+        public List<Tile> Moveables = new List<Tile>();
 
         public void Tick()
         {
             //Update "timer"
-            Time-=3;
-            
+            Time-=1/3D;
+                        
             //Move every moveable three times per "second"
             for (int i = 0; i < 3; i++)
-            {
-                //Move fireflies
-                _fireflies = MoveMoveable(Fireflies);
-                
-                //Move Boulders
-                //_boulders = MoveMoveable(Boulders); //@todo: fix bug here :]
-                
-                //Move Diamonds
-                _diamonds = MoveMoveable(Diamonds);
-            }
-        }
-        
-        //Helper method to move moveables
-        private List<Tile> MoveMoveable(List<Tile> tilesToMove)
-        {
-            List<Tile> movedTiles = new List<Tile>();
-            foreach (Tile tile in tilesToMove)
-                movedTiles.Add(tile.Entity.Move(tile));
-
-            return movedTiles;
+                Moveables.ToList().ForEach(m => { m.Entity.Move(m); });
         }
 
         public bool IsOver()

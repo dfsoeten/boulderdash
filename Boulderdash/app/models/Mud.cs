@@ -19,9 +19,8 @@ namespace Boulderdash.app.models
         }
 
         //Destroy Mud
-        public override void Destroy(Tile tile)
+        public override void Destroy()
         {
-            tile.Entity = new Air();
         }
     }
 }

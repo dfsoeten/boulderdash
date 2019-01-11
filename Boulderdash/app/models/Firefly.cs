@@ -33,7 +33,7 @@ namespace Boulderdash.app.models
             }
 
             if (to.Is<Air>())
-                return Trail(from, to);
+                return Slide(from, to);
 
             return from;
         }
@@ -73,9 +73,9 @@ namespace Boulderdash.app.models
         }
 
         //Destroy FireFly
-        public override void Destroy(Tile tile)
+        public override void Destroy()
         {
-            tile.Entity = new Air();
+            Tile.Entity = new Air();
         }
     }
 }

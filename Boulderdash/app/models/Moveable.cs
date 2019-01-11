@@ -9,10 +9,20 @@ namespace Boulderdash.app.models
 {
     public abstract class Moveable : Entity
     {
-        public abstract override Tile Move(Tile @from, Tile to = null);
+        public abstract override Tile Move(Tile from, Tile to = null);
 
-        protected Tile Trail(Tile from, Tile to)
+        protected Tile Dig(Tile from, Tile to)
         {
+            to.Entity = from.Entity;
+            from.Entity = new Air();
+            return to;
+        }
+
+        protected Tile Slide(Tile from, Tile to)
+        {
+            Tile.Level.Moveables.Remove(from);
+            Tile.Level.Moveables.Add(to);
+            
             to.Entity = from.Entity;
             from.Entity = new Air();
             return to;

@@ -19,9 +19,9 @@ namespace Boulderdash.app.models
         }
 
         //Destroy Wall
-        public override void Destroy(Tile tile)
+        public override void Destroy()
         {
-            tile.Entity = new Air();
+            
         }
     }
 }

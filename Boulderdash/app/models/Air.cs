@@ -19,7 +19,7 @@ namespace Boulderdash.app.models
         }
 
         //Destroy Air
-        public override void Destroy(Tile tile)
+        public override void Destroy()
         {
 
         }

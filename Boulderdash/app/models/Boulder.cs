@@ -19,17 +19,32 @@ namespace Boulderdash.app.models
         }
 
         public override Tile Move(Tile from, Tile to = null)
-        {
-            if (to.Is<Air>())
-                return Trail(from, to);
+        {            
+            if (from.Bottom.Is<Air>())
+                return Slide(from, from.Bottom);
+            
+            if (from.Bottom.Is<Boulder>())
+            {
+                if (from.Bottom.Right.Is<Air>())
+                    return Slide(from, from.Bottom.Right);
+
+                if (from.Bottom.Left.Is<Air>())
+                    return Slide(from, from.Bottom.Left);
+            }
+            
+            //Pushed by rockford
+            if (to != null && to.Is<Air>())
+            {
+                return Slide(from, to);
+            }
          
             return from;
         }
 
         //Destroy Boulder
-        public override void Destroy(Tile tile)
+        public override void Destroy()
         {
-            tile.Entity = new Air();
+            Tile.Entity = new Air();
         }
     }
 }

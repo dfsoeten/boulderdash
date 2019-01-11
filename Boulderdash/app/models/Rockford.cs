@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Boulderdash.app.models
 {
     public class Rockford : Moveable
-    {
+    {   
         public override char GetCharacter()
         {
             return 'R';
@@ -22,11 +22,12 @@ namespace Boulderdash.app.models
         public override Tile Move(Tile from, Tile to)
         {
             if (to.Is<Mud>() || to.Is<Air>())
-                return Trail(from, to);
+                return Dig(from, to);
 
             if (to.Is<Diamond>())
             {
-                return Trail(from, to);
+                to.Entity.Destroy();
+                return Dig(from, to);
             }
 
             if (to.Is<Boulder>())
@@ -34,13 +35,13 @@ namespace Boulderdash.app.models
                 if (from.Left == to && to.Left.Is<Air>())
                 {
                     to.Entity.Move(to, to.Left);
-                    return Trail(from, to);
+                    return Dig(from, to);
 
                 }
                 if (from.Right == to && to.Right.Is<Air>())
                 {
                     to.Entity.Move(to, to.Right);
-                    return Trail(from, to);
+                    return Dig(from, to);
                 }
             }            
 
@@ -48,9 +49,9 @@ namespace Boulderdash.app.models
         }
 
         //Destroy Rockford
-        public override void Destroy(Tile tile)
+        public override void Destroy()
         {
-
+            //xd
         }
     }
 }

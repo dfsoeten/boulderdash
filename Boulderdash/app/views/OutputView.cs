@@ -47,7 +47,7 @@ namespace Boulderdash.app.views
             
             //Draw Time & Score
             WriteColoredLine("----------------------------------------", ConsoleColor.DarkBlue);
-            WriteColoredLine($"Time: {level.Time}    Score: {level.Score}", ConsoleColor.Yellow);
+            WriteColoredLine($"Time: {Math.Round(level.Time, 1)}    Score: {level.Score}", ConsoleColor.Yellow);
             WriteColoredLine("----------------------------------------", ConsoleColor.DarkBlue);
             
                 

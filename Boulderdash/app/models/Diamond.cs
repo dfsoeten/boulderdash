@@ -19,15 +19,17 @@ namespace Boulderdash.app.models
         }
 
         //Move Diamond
-        public override Tile Move(Tile @from, Tile to = null)
+        public override Tile Move(Tile from, Tile to = null)
         {
             return from;
         }
 
         //Destroy Diamond
-        public override void Destroy(Tile tile)
+        public override void Destroy()
         {
-            tile.Entity = new Air();
+            Tile.Level.Score += 10;
+            Tile.Level.Moveables.Remove(Tile);
+            Tile.Entity = new Air();
         }
     }
 }

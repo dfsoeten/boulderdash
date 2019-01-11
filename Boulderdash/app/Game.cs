@@ -27,7 +27,7 @@ namespace Boulderdash
             //Select the first level by default
             _selectedLevel = _levels.First;
 
-            //Start the levelselector
+            //Start the game    
             Start(LevelSelect());
         }
 

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Boulderdash.app.models
 {
-    public abstract class Entity : Tile
+    public abstract class Entity
     {
-        private bool Destroyed = false;
-        
+        public Tile Tile { get; set; }
+                
         public abstract char GetCharacter();
 
         public abstract ConsoleColor GetColor();
 
-        public virtual void Destroy(Tile tile) { Destroyed = true; }
+        public virtual void Destroy() { }
         
         public virtual Tile Move(Tile from, Tile to = null) { return from; }
     }
