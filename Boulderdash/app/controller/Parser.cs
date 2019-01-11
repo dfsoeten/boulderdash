@@ -67,6 +67,8 @@ namespace Boulderdash.app.controller
                     tile.Entity = new Diamond() { Tile = tile }; Levels.Last().Moveables.Add(tile); break;
                 case 'W': //Wall
                     tile.Entity = new Wall() { Tile = tile }; break;
+                case 'X': //Exit
+                    tile.Entity = new Air() { Tile = tile }; Levels.Last().Exit = tile; break;
                 default: //Air
                     tile.Entity = new Air() { Tile = tile }; break;
             }

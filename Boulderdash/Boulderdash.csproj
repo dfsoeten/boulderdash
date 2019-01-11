@@ -50,6 +50,7 @@
     <Compile Include="app\models\Boulder.cs" />
     <Compile Include="app\models\Diamond.cs" />
     <Compile Include="app\models\Entity.cs" />
+    <Compile Include="app\models\Exit.cs" />
     <Compile Include="app\models\Firefly.cs" />
     <Compile Include="app\models\Level.cs" />
     <Compile Include="app\models\Moveable.cs" />

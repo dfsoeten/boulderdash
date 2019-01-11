@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Boulderdash.app.models
 {
-    class Air : Entity
+    public class Air : Entity
     {
         public override char GetCharacter()
         {

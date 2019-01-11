@@ -80,5 +80,18 @@ namespace Boulderdash.app.views
             WriteColoredLine(@"| |__| | (_| | | | | | |  __/ | |__| |\ V /  __/ |  |_|", ConsoleColor.Red);
             WriteColoredLine(@" \_____|\__,_|_| |_| |_|\___|  \____/  \_/ \___|_|  (_)", ConsoleColor.Red);
         }
+
+        public void GameWon(Level level)
+        {
+            //Clear the console
+            Console.Clear();
+            
+            WriteColoredLine(@"__     __         _            __          __         _ ", ConsoleColor.Green);
+            WriteColoredLine(@"\ \   / /        ( )           \ \        / /        | |", ConsoleColor.Green);
+            WriteColoredLine(@" \ \_/ /__  _   _|/__   _____   \ \  /\  / /__  _ __ | |", ConsoleColor.Green);
+            WriteColoredLine(@"  \   / _ \| | | | \ \ / / _ \   \ \/  \/ / _ \| '_ \| |", ConsoleColor.Green);
+            WriteColoredLine(@"   | | (_) | |_| |  \ V /  __/    \  /\  / (_) | | | |_|", ConsoleColor.Green);
+            WriteColoredLine(@"   |_|\___/ \__,_|   \_/ \___|     \/  \/ \___/|_| |_(_)", ConsoleColor.Green);
+        }
     }
 }

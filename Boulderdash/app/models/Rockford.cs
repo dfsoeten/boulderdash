@@ -21,6 +21,9 @@ namespace Boulderdash.app.models
         //Move rockford
         public override Tile Move(Tile from, Tile to)
         {
+            if (to.Is<Exit>())
+                Tile.Level.Won = true;
+            
             if (to.Is<Mud>() || to.Is<Air>())
                 return Dig(from, to);
 

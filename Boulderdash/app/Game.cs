@@ -88,7 +88,12 @@ namespace Boulderdash
                 _outputView.Level(level);     
             }
 
-            _outputView.GameOver();
+            if (level.Won)
+                _outputView.GameWon(level);
+            else
+                _outputView.GameOver();
+            
+            
             Console.ReadKey();
         }
     }
