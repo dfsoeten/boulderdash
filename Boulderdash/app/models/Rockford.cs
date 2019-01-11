@@ -4,8 +4,6 @@ namespace Boulderdash.app.models
 {
     public class Rockford : Moveable
     {
-        public bool IsDead { get; set; }
-
         public override char GetCharacter()
         {
             return 'R';
