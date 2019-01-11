@@ -29,7 +29,6 @@ namespace Boulderdash.app.models
         {
             Tile.Level.Score += 10;
             Tile.Level.Moveables.Remove(Tile);
-            Tile.Entity = new Air();
         }
     }
 }

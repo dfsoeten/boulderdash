@@ -80,6 +80,8 @@ namespace Boulderdash.app.models
         //Destroy FireFly
         public override void Destroy()
         {
+            Tile.Level.Score += 250;
+            Tile.Level.Moveables.Remove(Tile.Level.Moveables.Find(m => m.Entity == this));
             Tile.Entity = new Air();
         }
     }

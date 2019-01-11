@@ -24,6 +24,10 @@ namespace Boulderdash.app.models
             if (from.Bottom.Is<Rockford>())
                 Tile.Level.Lost = true;
             
+            //Destroy a firefly if a rock falls on it
+            if (from.Bottom.Is<Firefly>())
+                from.Bottom.Entity.Destroy();
+            
             //Boulders fall down
             if (from.Bottom.Is<Air>())
                 return Slide(from, from.Bottom);
@@ -48,7 +52,7 @@ namespace Boulderdash.app.models
         //Destroy Boulder
         public override void Destroy()
         {
-            Tile.Entity = new Air();
+            throw new NotImplementedException();
         }
     }
 }

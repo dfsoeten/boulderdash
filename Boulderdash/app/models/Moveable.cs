@@ -14,17 +14,18 @@ namespace Boulderdash.app.models
         protected Tile Dig(Tile from, Tile to)
         {
             to.Entity = from.Entity;
-            from.Entity = new Air();
+            from.Entity = new Air { Tile = from };
             return to;
         }
 
         protected Tile Slide(Tile from, Tile to)
         {
             Tile.Level.Moveables.Remove(from);
-            Tile.Level.Moveables.Add(to);
-            
+
             to.Entity = from.Entity;
             from.Entity = new Air();
+            
+            Tile.Level.Moveables.Add(to);
             return to;
         }
     }

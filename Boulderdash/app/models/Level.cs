@@ -19,19 +19,13 @@ namespace Boulderdash.app.models
         
         public bool Won { get; set; } = false;
 
-        public bool Lost { get; set; } = false;
+        public bool Lost { private get; set; } = false;
 
         public Tile Start { get; set; }
 
-        public Tile Exit { get; set; }
+        public Tile Exit { private get; set; }
 
-        private Tile _rockFord;
-        
-        public Tile RockFord
-        {
-            get => _rockFord;
-            set => _rockFord = (_rockFord == null) ? value : throw new Exception("Rockford has been set twice!");
-        }
+        public Tile RockFord { get; set; }
 
         public List<Tile> Moveables = new List<Tile>();
 
