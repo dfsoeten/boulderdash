@@ -17,12 +17,8 @@ namespace Boulderdash.app.models
         //Move rockford
         public override void Move(Tile from, Tile to = null)
         {
-            //Pepehands
-            if (to == null)
-                return;
-            
             //Win the game if you touch the exit
-            if (to.Is<Exit>())
+            if (to.Is<Exit>()) //@todo: fix nullreferenceexception here
                 Tile.Level.Won = true;
             
             //Dig through mud
