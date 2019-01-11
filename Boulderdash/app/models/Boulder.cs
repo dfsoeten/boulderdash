@@ -26,7 +26,11 @@ namespace Boulderdash.app.models
             
             //Destroy a firefly if a rock falls on it
             if (from.Bottom.Is<Firefly>())
+            {
                 from.Bottom.Entity.Destroy();
+                return Slide(from, from.Bottom);
+            }
+                
             
             //Boulders fall down
             if (from.Bottom.Is<Air>())

@@ -82,7 +82,6 @@ namespace Boulderdash.app.models
         {
             Tile.Level.Score += 250;
             Tile.Level.Moveables.Remove(Tile.Level.Moveables.Find(m => m.Entity == this));
-            Tile.Entity = new Air();
         }
     }
 }
