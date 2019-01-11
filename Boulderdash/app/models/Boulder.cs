@@ -19,10 +19,16 @@ namespace Boulderdash.app.models
         }
 
         public override Tile Move(Tile from, Tile to = null)
-        {            
+        {
+            //Lose the game if a boulder falls on rockford
+            if (from.Bottom.Is<Rockford>())
+                Tile.Level.Lost = true;
+            
+            //Boulders fall down
             if (from.Bottom.Is<Air>())
                 return Slide(from, from.Bottom);
             
+            //Boulders slide of one another
             if (from.Bottom.Is<Boulder>())
             {
                 if (from.Bottom.Right.Is<Air>())
@@ -34,9 +40,7 @@ namespace Boulderdash.app.models
             
             //Pushed by rockford
             if (to != null && to.Is<Air>())
-            {
                 return Slide(from, to);
-            }
          
             return from;
         }

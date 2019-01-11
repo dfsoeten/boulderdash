@@ -4,9 +4,9 @@ S           D                          S
 S   B       B                          S
 S   B      BM                          S
 S MMMMM MMMMMM                   D     S
-S M   M M   MM                         S
+S M   M M   MM      R                  S
 S M   M M   MM                 B       S
-S MF  M MF MMM        R                S
+S MF  M MF MMM                         S
 S M   M M   MM      F                  S
 S M   M M   MM                         S
 S MMMMM MMMMMM                         S

@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace Boulderdash.app.models
 {
     public class Rockford : Moveable
-    {   
+    {
+        public bool IsDead { get; set; }
+
         public override char GetCharacter()
         {
             return 'R';
@@ -20,19 +22,23 @@ namespace Boulderdash.app.models
 
         //Move rockford
         public override Tile Move(Tile from, Tile to)
-        {
+        {    
+            //Win the game if you touch the exit
             if (to.Is<Exit>())
                 Tile.Level.Won = true;
             
+            //Dig through mud
             if (to.Is<Mud>() || to.Is<Air>())
                 return Dig(from, to);
 
+            //Collect diamonds
             if (to.Is<Diamond>())
             {
                 to.Entity.Destroy();
                 return Dig(from, to);
             }
 
+            //Push boulders
             if (to.Is<Boulder>())
             {
                 if (from.Left == to && to.Left.Is<Air>())
