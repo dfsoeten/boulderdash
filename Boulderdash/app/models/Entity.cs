@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Boulderdash.Enums;
 
 namespace Boulderdash.app.models
 {
@@ -17,5 +18,7 @@ namespace Boulderdash.app.models
         public virtual void Destroy() { }
         
         public virtual Tile Move(Tile from, Tile to = null) { return from; }
+
+        public virtual void Interact() { }
     }
 }

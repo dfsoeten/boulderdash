@@ -1,18 +1,17 @@
 using System;
-using System.Linq;
 
 namespace Boulderdash.app.models
 {
-    public class Exit : Air
+    public class Rubble : Moveable
     {
         public override char GetCharacter()
         {
-            return 'x';
+            return '*';
         }
-        
+
         public override ConsoleColor GetColor()
         {
-            return ConsoleColor.Red;
+            return ConsoleColor.Gray;
         }
     }
 }

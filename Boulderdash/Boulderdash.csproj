@@ -52,10 +52,12 @@
     <Compile Include="app\models\Entity.cs" />
     <Compile Include="app\models\Exit.cs" />
     <Compile Include="app\models\Firefly.cs" />
+    <Compile Include="app\models\HardenedMud.cs" />
     <Compile Include="app\models\Level.cs" />
     <Compile Include="app\models\Moveable.cs" />
     <Compile Include="app\models\Mud.cs" />
     <Compile Include="app\models\Rockford.cs" />
+    <Compile Include="app\models\Rubble.cs" />
     <Compile Include="app\models\Steelwall.cs" />
     <Compile Include="app\models\Tile.cs" />
     <Compile Include="app\models\Wall.cs" />

@@ -49,28 +49,30 @@ namespace Boulderdash.app.controller
         //Create tile objects with the right entity objects
         private Tile CreateTile(char c)
         {
-            Tile tile = new Tile() { Level = Levels.Last() };
+            Tile tile = new Tile { Level = Levels.Last() };
     
             switch (c)
             {
                 case 'S': //Steelwall
-                    tile.Entity = new Steelwall() { Tile = tile }; break;
+                    tile.Entity = new Steelwall { Tile = tile }; break;
                 case 'B': //Boulder
-                    tile.Entity = new Boulder() { Tile = tile }; Levels.Last().Moveables.Add(tile); break;
+                    tile.Entity = new Boulder { Tile = tile }; Levels.Last().Moveables.Add(tile); break;
                 case 'M': //Mud
-                    tile.Entity = new Mud() { Tile = tile }; break;
+                    tile.Entity = new Mud { Tile = tile }; break;
                 case 'F': //Firefly
-                    tile.Entity = new Firefly() { Tile = tile }; Levels.Last().Moveables.Add(tile); break;
+                    tile.Entity = new Firefly { Tile = tile }; Levels.Last().Moveables.Add(tile); break;
                 case 'R': //Rockford
-                    tile.Entity = new Rockford() { Tile = tile }; Levels.Last().RockFord = tile; break;
+                    tile.Entity = new Rockford { Tile = tile }; Levels.Last().RockFord = tile; break;
                 case 'D': //Diamond
-                    tile.Entity = new Diamond() { Tile = tile }; Levels.Last().Moveables.Add(tile); break;
+                    tile.Entity = new Diamond { Tile = tile }; Levels.Last().Moveables.Add(tile); break;
                 case 'W': //Wall
-                    tile.Entity = new Wall() { Tile = tile }; break;
+                    tile.Entity = new Wall { Tile = tile }; break;
                 case 'X': //Exit
-                    tile.Entity = new Air() { Tile = tile }; Levels.Last().Exit = tile; break;
+                    tile.Entity = new Air { Tile = tile }; Levels.Last().Exit = tile; break;
+                case 'H': //Hardened Mud
+                    tile.Entity = new HardenedMud { Tile = tile }; Levels.Last().HardenedMuds.Add(tile); break;
                 default: //Air
-                    tile.Entity = new Air() { Tile = tile }; break;
+                    tile.Entity = new Air { Tile = tile }; break;
             }
             
             return tile;

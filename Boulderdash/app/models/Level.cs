@@ -28,6 +28,8 @@ namespace Boulderdash.app.models
         public Tile RockFord { get; set; }
 
         public List<Tile> Moveables = new List<Tile>();
+        
+        public List<Tile> HardenedMuds = new List<Tile>();
 
         public void Tick()
         {
@@ -37,7 +39,17 @@ namespace Boulderdash.app.models
             //Move every moveable three times per "second"
             for (int i = 0; i < 3; i++)
                 Moveables.ToList().ForEach(m => { m.Entity.Move(m); });
-            
+
+            //Hardened mud transforms into rubble if it has less than two supports
+            foreach (Tile hardenedMud in HardenedMuds.ToList())
+            {
+                if (hardenedMud.SurroundedBy<Mud>(hardenedMud) + hardenedMud.SurroundedBy<HardenedMud>(hardenedMud) < 2)
+                {
+                    HardenedMuds.Remove(hardenedMud);
+                    Moveables.Add(hardenedMud.Entity = new Rubble{ Tile = hardenedMud });    
+                }                
+            }
+
             //Show exit if every diamond is collected
             if (!Moveables.Any(m => m.Is<Diamond>()))
                 Exit.Entity = new Exit();

@@ -25,37 +25,19 @@ namespace Boulderdash.app.models
         public override Tile Move(Tile from, Tile to)
         {
             //Lose the game if you get hit by a firefly
-            if (GetNextDirectionTile(from).Is<Rockford>())
+            if (Tile.GetTileFromDirection(_direction, from).Is<Rockford>())
                 Tile.Level.Lost = true;
             
             //Change direction if the firefly can't move
             if (to == null)
             {   
-                if(!(to = GetNextDirectionTile(from)).Is<Air>())
+                if(!(to = Tile.GetTileFromDirection(_direction, from)).Is<Air>())
                     Turn();
                 
                 return Move(from, to);
             }
 
             return to.Is<Air>() ? Slide(from, to) : from;
-        }
-
-        //Get the tile from a direction
-        private Tile GetNextDirectionTile(Tile from)
-        {
-            switch (_direction)
-            {
-                case Direction.Top:
-                    return from.Top;
-                case Direction.Right:
-                    return from.Right;
-                case Direction.Bottom:
-                    return from.Bottom;
-                case Direction.Left:
-                    return from.Left;
-            }
-
-            return from;
         }
         
         //Change the direction of the firefly

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
+using Boulderdash.Enums;
 
 namespace Boulderdash.app.models
 {
-    class Mud : Entity
+    public class HardenedMud : Entity
     {
         public override char GetCharacter()
         {
@@ -15,12 +12,12 @@ namespace Boulderdash.app.models
 
         public override ConsoleColor GetColor()
         {
-            return ConsoleColor.Gray;
+            return ConsoleColor.DarkGray;
         }
 
-        //Destroy Mud
         public override void Destroy()
         {
+            Tile.Level.Moveables.Remove(Tile);
         }
     }
 }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Boulderdash.app.models
 {
@@ -21,7 +17,7 @@ namespace Boulderdash.app.models
         }
 
         //Move rockford
-        public override Tile Move(Tile from, Tile to)
+        public override Tile Move(Tile from, Tile to = null)
         {    
             //Win the game if you touch the exit
             if (to.Is<Exit>())
@@ -30,6 +26,10 @@ namespace Boulderdash.app.models
             //Dig through mud
             if (to.Is<Mud>() || to.Is<Air>())
                 return Dig(from, to);
+
+            //Dig through hardened mud if possible
+            if (to.Is<HardenedMud>())
+                to.Entity.Interact();
 
             //Collect diamonds
             if (to.Is<Diamond>())

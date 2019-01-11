@@ -34,7 +34,7 @@ namespace Boulderdash.app.models
 
             return from;
         }
-
+        
         protected Tile Dig(Tile from, Tile to)
         {
             to.Entity = from.Entity;
