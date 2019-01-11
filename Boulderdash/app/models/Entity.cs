@@ -17,8 +17,7 @@ namespace Boulderdash.app.models
 
         public virtual void Destroy() { }
         
-        public virtual void Move(Tile @from, Tile to = null) { }
-
-        public virtual void Interact() { }
+        public virtual void Move(Tile from, Tile to = null) { }
+        
     }
 }

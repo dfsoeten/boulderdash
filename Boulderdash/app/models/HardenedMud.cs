@@ -14,10 +14,5 @@ namespace Boulderdash.app.models
         {
             return ConsoleColor.DarkGray;
         }
-
-        public override void Destroy()
-        {
-            Tile.Level.Moveables.Remove(Tile);
-        }
     }
 }

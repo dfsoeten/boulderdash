@@ -9,7 +9,7 @@ namespace Boulderdash.app.models
 {
     public abstract class Moveable : Entity
     {
-        public override void Move(Tile @from, Tile to = null)
+        public override void Move(Tile from, Tile to = null)
         {
             //Boulders fall down
             if (from.Bottom.Is<Air>())

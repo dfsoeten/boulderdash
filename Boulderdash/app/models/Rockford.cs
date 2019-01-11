@@ -27,11 +27,7 @@ namespace Boulderdash.app.models
             
             //Dig through mud
             if (to.Is<Mud>() || to.Is<Air>())
-                Dig(from, to);
-
-            //Dig through hardened mud if possible
-            if (to.Is<HardenedMud>())
-                to.Entity.Interact();
+                Dig(from, to);   
 
             //Collect diamonds
             if (to.Is<Diamond>())
