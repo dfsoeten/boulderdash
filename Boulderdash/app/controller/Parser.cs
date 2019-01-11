@@ -71,6 +71,8 @@ namespace Boulderdash.app.controller
                     tile.Entity = new Air { Tile = tile }; Levels.Last().Exit = tile; break;
                 case 'H': //Hardened Mud
                     tile.Entity = new HardenedMud { Tile = tile }; Levels.Last().HardenedMuds.Add(tile); break;
+                case 'T':
+                    tile.Entity = new Tnt { Tile = tile }; Levels.Last().Moveables.Add(tile); break;
                 default: //Air
                     tile.Entity = new Air { Tile = tile }; break;
             }

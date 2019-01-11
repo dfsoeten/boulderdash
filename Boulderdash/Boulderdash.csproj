@@ -60,6 +60,7 @@
     <Compile Include="app\models\Rubble.cs" />
     <Compile Include="app\models\Steelwall.cs" />
     <Compile Include="app\models\Tile.cs" />
+    <Compile Include="app\models\Tnt.cs" />
     <Compile Include="app\models\Wall.cs" />
     <Compile Include="app\views\BaseView.cs" />
     <Compile Include="app\views\InputView.cs" />
