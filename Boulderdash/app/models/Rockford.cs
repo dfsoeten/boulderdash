@@ -15,8 +15,12 @@ namespace Boulderdash.app.models
         }
 
         //Move rockford
-        public override void Move(Tile @from, Tile to = null)
-        {    
+        public override void Move(Tile from, Tile to = null)
+        {
+            //Pepehands
+            if (to == null)
+                return;
+            
             //Win the game if you touch the exit
             if (to.Is<Exit>())
                 Tile.Level.Won = true;
