@@ -28,6 +28,10 @@ namespace Boulderdash.app.models
             //Don't destroy TnT :)
             if (to.Is<Tnt>())
                 Dig(from, to, false);
+            
+            //Hardened mud takes three hits
+            if(to.Is<HardenedMud>())
+                to.Entity.Destroy(to);
 
             //Push boulders
             if (to.Is<Boulder>())
