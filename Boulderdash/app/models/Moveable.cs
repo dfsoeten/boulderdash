@@ -28,14 +28,6 @@ namespace Boulderdash.app.models
             }
         }
         
-        protected void Dig(Tile from, Tile to)
-        { 
-            to.Entity.Destroy(to);
-            to.Entity = from.Entity;
-            from.Entity = new Air();
-            Tile.Level.RockFord = to;
-        }
-        
         protected void Slide(Tile from, Tile to)
         {
             Tile.Level.Moveables.Remove(from);

@@ -19,15 +19,13 @@ namespace Boulderdash.app.models
         
         public virtual void Destroy(Tile destroyable = null)
         {
-            //If a moveable is destroyed, remove it from the moveables list
-            if (destroyable.Is<Moveable>())
-                Tile.Level.Moveables.Remove(Tile.Level.Moveables.Find(m => m.Entity == destroyable.Entity));
+            Tile.Level.Moveables.Remove(Tile.Level.Moveables.Find(m => m.Entity == destroyable.Entity));
             
             destroyable.Entity = new Air();
         }
         
         //Explode entities within a blast radius
-        public void Explode(Tile center, int blastRadius = 3)
+        protected void Explode(Tile center, int blastRadius = 3)
         {    
             if (--blastRadius > 0)
             {
@@ -36,8 +34,8 @@ namespace Boulderdash.app.models
                 Explode(center.Top, blastRadius);
                 Explode(center.Bottom, blastRadius);
             }
-            
-            center.Entity.Destroy(center);
+
+            center?.Entity.Destroy(center);
         }
     }
 }

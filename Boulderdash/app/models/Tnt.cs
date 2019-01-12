@@ -4,7 +4,7 @@ namespace Boulderdash.app.models
 {
     public class Tnt : Moveable
     {
-        private bool hasMoved { get; set; } = false;
+        private bool HasMoved { get; set; }
         
         public override char GetCharacter()
         {
@@ -20,11 +20,17 @@ namespace Boulderdash.app.models
         {
             //Explode
             if (from.Bottom.Is<Air>())
-                hasMoved = true;     
-            else if(hasMoved)
-                Explode(from);
+                HasMoved = true;     
+            else if(HasMoved)
+                Destroy(from);
 
             base.Move(from, to);
+        }
+
+        public override void Destroy(Tile destroyable = null)
+        {
+            base.Destroy(destroyable);
+            Explode(destroyable);
         }
     }
 }
