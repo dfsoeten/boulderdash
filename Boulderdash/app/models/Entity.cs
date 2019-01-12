@@ -25,12 +25,14 @@ namespace Boulderdash.app.models
             
             //If a moveable is destroyed, remove it from the moveables list
             if (destroyable.Is<Moveable>())
-                if(Tile.Level.Moveables.Remove(Tile))
-                    throw new Exception("cant remove exploded entity");
+                Tile.Level.Moveables.Remove(Tile.Level.Moveables.Find(m => m.Entity == destroyable.Entity));
             
             //Only anything other than a steelwall or exit can be destroyed
             if (!destroyable.Is<Steelwall>() || !destroyable.Is<Exit>())
+            {
                 destroyable.Entity = new Air();
+                destroyable.Entity.Destroy();
+            }
         }
         
         //Explode entities within a blast radius

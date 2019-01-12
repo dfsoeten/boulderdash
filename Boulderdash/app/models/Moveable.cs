@@ -26,13 +26,6 @@ namespace Boulderdash.app.models
                 else if (from.Bottom.Left.Is<Air>())
                     Slide(from, from.Bottom.Left);
             }
-            
-            //Destroy a firefly if a moveable falls on it
-            if (from.Bottom.Is<Firefly>())
-            {
-                from.Bottom.Entity.Destroy();
-                Slide(from, from.Bottom);
-            }  
         }
         
         protected void Dig(Tile from, Tile to)
