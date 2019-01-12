@@ -24,10 +24,6 @@ namespace Boulderdash.app.models
             if (from.Bottom.Is<Rockford>())
                 Tile.Level.Lost = true;
             
-            //Pushed by rockford
-            if (to != null && to.Is<Air>())
-                Slide(from, to);
-            
             base.Move(from, to);
         }
 

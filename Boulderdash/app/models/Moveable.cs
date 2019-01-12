@@ -12,8 +12,10 @@ namespace Boulderdash.app.models
         public override void Move(Tile from, Tile to = null)
         {
             //Boulders fall down
-            if (from.Bottom.Is<Air>())
+            if (from.Bottom.Is<Air>()){
                 Slide(from, from.Bottom);
+                return;
+            }    
             
             //Boulders slide of one another
             if (from.Bottom.Is<Boulder>() || from.Bottom.Is<Diamond>())
@@ -21,11 +23,11 @@ namespace Boulderdash.app.models
                 if (from.Bottom.Right.Is<Air>())
                     Slide(from, from.Bottom.Right);
 
-                if (from.Bottom.Left.Is<Air>())
+                else if (from.Bottom.Left.Is<Air>())
                     Slide(from, from.Bottom.Left);
             }
             
-            //Destroy a firefly if a rock falls on it
+            //Destroy a firefly if a moveable falls on it
             if (from.Bottom.Is<Firefly>())
             {
                 from.Bottom.Entity.Destroy();
@@ -43,7 +45,7 @@ namespace Boulderdash.app.models
         protected void Slide(Tile from, Tile to)
         {
             Tile.Level.Moveables.Remove(from);
-
+            
             to.Entity = from.Entity;
             from.Entity = new Air();
             

@@ -25,7 +25,7 @@ namespace Boulderdash.app.models
 
         private void Explode(Tile center, int blastRadius = 3)
         {
-            throw new NotImplementedException("Implment explode()");
+            //throw new NotImplementedException("Implment explode()");
         }
     }
 }

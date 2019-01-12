@@ -37,8 +37,7 @@ namespace Boulderdash.app.models
             Time-=1/3D;
                         
             //Move every moveable three times per "second"
-            for (int i = 0; i < 3; i++)
-                Moveables.ToList().ForEach(m => { m.Entity.Move(m); });
+            Moveables.ToList().ForEach(m => { m.Entity.Move(m); });
 
             //Hardened mud transforms into rubble if it has less than two supports
             foreach (Tile hardenedMud in HardenedMuds.ToList())

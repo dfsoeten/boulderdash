@@ -16,9 +16,9 @@ namespace Boulderdash.app.models
 
         //Move rockford
         public override void Move(Tile from, Tile to = null)
-        {
+        {    
             //Win the game if you touch the exit
-            if (to.Is<Exit>()) //@todo: fix nullreferenceexception here
+            if (to.Is<Exit>())
                 Tile.Level.Won = true;
             
             //Dig through mud
@@ -37,13 +37,13 @@ namespace Boulderdash.app.models
             {
                 if (from.Left == to && to.Left.Is<Air>())
                 {
-                    to.Entity.Move(to, to.Left);
+                    Slide(to, to.Left);
                     Dig(from, to);
 
                 }
                 if (from.Right == to && to.Right.Is<Air>())
                 {
-                    to.Entity.Move(to, to.Right);
+                    Slide(to, to.Right);
                     Dig(from, to);
                 }
             }            
