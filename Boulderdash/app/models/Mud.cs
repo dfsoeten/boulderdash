@@ -19,7 +19,7 @@ namespace Boulderdash.app.models
         }
 
         //Destroy Mud
-        public override void Destroy()
+        public override void Destroy(Tile destroyable)
         {
         }
     }

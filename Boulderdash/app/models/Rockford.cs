@@ -48,11 +48,5 @@ namespace Boulderdash.app.models
                 }
             }            
         }
-
-        //Destroy Rockford
-        public override void Destroy()
-        {
-            //xd
-        }
     }
 }

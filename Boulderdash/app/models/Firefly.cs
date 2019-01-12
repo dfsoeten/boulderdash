@@ -25,20 +25,20 @@ namespace Boulderdash.app.models
         public override void Move(Tile from, Tile to = null)
         {
             //Lose the game if you get hit by a firefly
-//            if (Tile.GetTileFromDirection(_direction, from).Is<Rockford>())
-//                Tile.Level.Lost = true;
-//            
-//            //Change direction if the firefly can't move
-//            if (to == null)
-//            {   
-//                if(!(to = Tile.GetTileFromDirection(_direction, from)).Is<Air>())
-//                    Turn();
-//                
-//                Move(from, to);
-//            }
-//
-//            if (to.Is<Air>())
-//                Slide(from, to);
+            if (Tile.GetTileFromDirection(_direction, from).Is<Rockford>())
+                Tile.Level.Lost = true;
+            
+            //Change direction if the firefly can't move
+            if (to == null)
+            {   
+                if(!(to = Tile.GetTileFromDirection(_direction, from)).Is<Air>())
+                    Turn();
+                
+                Move(from, to);
+            }
+
+            if (to.Is<Air>())
+                Slide(from, to);
         }
         
         //Change the direction of the firefly
@@ -59,7 +59,7 @@ namespace Boulderdash.app.models
         }
 
         //Destroy FireFly
-        public override void Destroy()
+        public override void Destroy(Tile destroyable)
         {
             Tile.Level.Score += 250;
             Tile.Level.Moveables.Remove(Tile.Level.Moveables.Find(m => m.Entity == this));

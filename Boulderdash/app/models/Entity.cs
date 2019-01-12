@@ -15,7 +15,13 @@ namespace Boulderdash.app.models
 
         public abstract ConsoleColor GetColor();
 
-        public virtual void Destroy() { }
+        public virtual void Destroy(Tile destroyable = null)
+        {
+            if (destroyable.Is<Rockford>())
+                Tile.Level.Lost = true;
+            
+            destroyable.Entity = new Air();
+        }
         
         public virtual void Move(Tile from, Tile to = null) { }
         

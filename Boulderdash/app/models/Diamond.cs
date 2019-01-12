@@ -19,7 +19,7 @@ namespace Boulderdash.app.models
         }
 
         //Destroy Diamond
-        public override void Destroy()
+        public override void Destroy(Tile destroyable)
         {
             Tile.Level.Score += 10;
             Tile.Level.Moveables.Remove(Tile);

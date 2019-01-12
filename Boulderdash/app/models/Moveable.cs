@@ -45,8 +45,6 @@ namespace Boulderdash.app.models
             Tile.Level.RockFord = to;
         }
         
-        
-
         protected void Slide(Tile from, Tile to)
         {
             Tile.Level.Moveables.Remove(from);
@@ -55,6 +53,19 @@ namespace Boulderdash.app.models
             from.Entity = new Air();
             
             Tile.Level.Moveables.Add(to);
+        }
+        
+        protected void Explode(Tile center, int blastRadius = 3)
+        {
+            if (--blastRadius > 0)
+            {
+                Explode(center.Left, blastRadius);
+                Explode(center.Right, blastRadius);    
+                Explode(center.Top, blastRadius);
+                Explode(center.Bottom, blastRadius);
+            }
+            
+            Destroy(center);
         }
     }
 }
