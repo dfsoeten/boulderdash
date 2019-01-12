@@ -22,7 +22,7 @@ namespace Boulderdash.app.models
                 Tile.Level.Won = true;
             
             //Dig through mud
-            if (to.Is<Mud>() || to.Is<Air>())
+            if (to.Is<Mud>() || to.Is<Air>() || to.Is<Rubble>())
                 Dig(from, to);   
 
             //Collect diamonds
