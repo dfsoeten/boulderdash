@@ -21,7 +21,7 @@ namespace Boulderdash.app.models
 
         public override void Destroy(Tile destroyable)
         {
-
+            //Don't destroy steelwalls
         }
     }
 }

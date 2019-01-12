@@ -24,14 +24,11 @@ namespace Boulderdash.app.models
             if (from.Bottom.Is<Rockford>())
                 Tile.Level.Lost = true;
 
-            if (from.Bottom.Is<Firefly>())
-            {
-                from.Bottom.Entity.Destroy();
-                Explode(from);
-                return;
-            }
-            
             base.Move(from, to);
+            
+            if (from.Bottom.Is<Firefly>())
+                Explode(from);
+            
         }
     }
 }

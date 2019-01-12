@@ -17,11 +17,5 @@ namespace Boulderdash.app.models
         {
             return ConsoleColor.Gray;
         }
-
-        //Destroy Wall
-        public override void Destroy(Tile destroyable)
-        {
-            
-        }
     }
 }

@@ -21,16 +21,9 @@ namespace Boulderdash.app.models
             if (to.Is<Exit>())
                 Tile.Level.Won = true;
             
-            //Dig through mud
-            if (to.Is<Mud>() || to.Is<Air>() || to.Is<Rubble>())
+            //Rockford's diggables
+            if (to.Is<Mud>() || to.Is<Air>() || to.Is<Rubble>() || to.Is<Diamond>() || to.Is<Tnt>())
                 Dig(from, to);   
-
-            //Collect diamonds
-            if (to.Is<Diamond>())
-            {
-                to.Entity.Destroy();
-                Dig(from, to);
-            }
 
             //Push boulders
             if (to.Is<Boulder>())
@@ -47,6 +40,13 @@ namespace Boulderdash.app.models
                     Dig(from, to);
                 }
             }            
+        }
+
+        public override void Destroy(Tile destroyable = null)
+        {
+            Tile.Level.Lost = true;
+            
+            base.Destroy(destroyable);
         }
     }
 }

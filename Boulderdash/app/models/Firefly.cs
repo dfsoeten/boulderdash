@@ -63,6 +63,7 @@ namespace Boulderdash.app.models
         public override void Destroy(Tile destroyable)
         {
             Tile.Level.Score += 250;
+            base.Destroy(destroyable);
         }
     }
 }

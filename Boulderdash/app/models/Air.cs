@@ -21,7 +21,7 @@ namespace Boulderdash.app.models
         //Destroy Air
         public override void Destroy(Tile destroyable)
         {
-
+            //Can't destroy air
         }
     }
 }

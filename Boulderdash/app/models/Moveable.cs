@@ -29,12 +29,10 @@ namespace Boulderdash.app.models
         }
         
         protected void Dig(Tile from, Tile to)
-        {
-            if(to.Is<Moveable>())
-                Tile.Level.Moveables.Remove(to);
-            
+        { 
+            to.Entity.Destroy(to);
             to.Entity = from.Entity;
-            from.Entity = new Air { Tile = from };
+            from.Entity = new Air();
             Tile.Level.RockFord = to;
         }
         

@@ -16,7 +16,7 @@ S            M M                       S
 S            M M                       S
 S            M M                       S
 S            M M              X        S
-S            M                         S
+S            M        H                S
 S            M F                       S
-S             M   D        M           S
+S             M   D  MT    M           S
 SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS

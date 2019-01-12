@@ -19,20 +19,11 @@ namespace Boulderdash.app.models
         
         public virtual void Destroy(Tile destroyable = null)
         {
-            //If rockford is destroyed, you lose the game
-            if (destroyable.Is<Rockford>())
-                Tile.Level.Lost = true;
-            
             //If a moveable is destroyed, remove it from the moveables list
             if (destroyable.Is<Moveable>())
                 Tile.Level.Moveables.Remove(Tile.Level.Moveables.Find(m => m.Entity == destroyable.Entity));
             
-            //Only anything other than a steelwall or exit can be destroyed
-            if (!destroyable.Is<Steelwall>() || !destroyable.Is<Exit>())
-            {
-                destroyable.Entity = new Air();
-                destroyable.Entity.Destroy();
-            }
+            destroyable.Entity = new Air();
         }
         
         //Explode entities within a blast radius
@@ -46,7 +37,7 @@ namespace Boulderdash.app.models
                 Explode(center.Bottom, blastRadius);
             }
             
-            Destroy(center);
+            center.Entity.Destroy(center);
         }
     }
 }
