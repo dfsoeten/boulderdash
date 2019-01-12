@@ -53,6 +53,9 @@ namespace Boulderdash.app.models
             //Show exit if every diamond is collected
             if (!Moveables.Any(m => m.Is<Diamond>()))
                 Exit.Entity = new Exit();
+            
+//            if(Time < 120)
+//                Moveables.ForEach(m => { if (m.Entity.Is<Tnt>()) m.Entity.Explode(m); });
         }
 
         public bool IsOver()

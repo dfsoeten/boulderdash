@@ -11,13 +11,13 @@ namespace Boulderdash.app.models
     {
         public override void Move(Tile from, Tile to = null)
         {
-            //Boulders fall down
+            //Moveables fall down
             if (from.Bottom.Is<Air>()){
                 Slide(from, from.Bottom);
                 return;
             }    
             
-            //Boulders slide of one another
+            //Moveables slide of one another
             if (from.Bottom.Is<Boulder>() || from.Bottom.Is<Diamond>())
             {
                 if (from.Bottom.Right.Is<Air>())
@@ -53,19 +53,6 @@ namespace Boulderdash.app.models
             from.Entity = new Air();
             
             Tile.Level.Moveables.Add(to);
-        }
-        
-        protected void Explode(Tile center, int blastRadius = 3)
-        {
-            if (--blastRadius > 0)
-            {
-                Explode(center.Left, blastRadius);
-                Explode(center.Right, blastRadius);    
-                Explode(center.Top, blastRadius);
-                Explode(center.Bottom, blastRadius);
-            }
-            
-            Destroy(center);
         }
     }
 }
