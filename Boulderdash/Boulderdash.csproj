@@ -73,10 +73,9 @@
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="levels\firefly.txt" />
-    <Content Include="levels\level1.txt" />
     <Content Include="levels\level2.txt" />
     <Content Include="levels\level3.txt" />
+    <Content Include="levels\level1.txt" />
     <Content Include="levels\test.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
